@@ -185,91 +185,6 @@
             <li>Each <span class="blue">Index</span> has a property to represent its <span class="red">name (Datatype: String)</span>.</li>
             <li>And a property that refers the columns to which it is associated with presents called <span class="red">reference (Datatype: String)</span>.</li>
           </ul>  
-
-          <h3 id="transformation">Transformation rules</h3>
-          <hr>
-          <p>Basically a <strong>transformation rule</strong> is, the principle in logic establishing the conditions under which one statement can be derived or validly deduced from one or more other statements especially in a formalized language.<p>
-
-          <p><strong>SiTra</strong> is a simple Java library for supporting a programming approach to writing transformations aiming to, firstly use Java for writing transformations, and secondly, to provide a minimal framework for the execution of transformations. SiTra consists of two interfaces and a class that implements a transformation algorithm. The aim is to facilitate a style of programming that incorporates the concept of transformation rules.</p>
-
-          <p><strong>Transformer</strong> – the primary transformation object; it contains a collection of rules, and manages the process of transforming source model objects into target model objects.</p>
-
-          <p><strong>Rule</strong> – a rule deals with specific detail of how to map an object from a source model into an object of the target model. One or more rules may or may be applicable for the same type of object and it is necessary to have a means to determine the applicability of a rule for a specific object, not just its type.</p>
-
-          <p>These are the rules to be followed to convert SQL to Cassandra:</p><br>
-
-          <h4 id="Database2Keyspace"><code>Database2Keyspace</code> (Database to Keyspace)</h4>
-          <ul>
-            <li>This rule applies to the SQL database’s schema and to the Cassandra’s Keyspace.</li>
-            <li>This rule takes the Database object and copies its schema name, and creates a new keyspace object with the same name as the SQL Database Schema.</li>
-          </ul>
-          <br>
-
-          <h4 id="Table2ColumnFamily"><code>Table2ColumnFamily</code> (Tables to ColumnFamily)</h4>
-          <ul>
-            <li>This rule applies to the SQL table and to the Cassandra’s column family.</li>
-            <li>This rule, for each table in the SQL, takes the table object and creates a column family, in the keyspace, with the same name as the table.</li>
-            <li>It adds any options to the table if specified.</li>
-          </ul>
-          <br>
-
-          <h4 id="SqlCol2NoSqlCol"><code>SqlCol2NoSqlCol</code> (SQL Column to NoSQL Column)</h4>
-          <ul>
-            <li>This rule applies to the SQL columns and to the Cassandra columns.</li>
-            <li>This rule applies to each column present in the SQL table object, and it takes a column object and creates a Cassandra column object with the same name.</li>
-            <li>The following table represents the list of SQL Data types and the corresponding NoSQL Data types to which they are mapped.</li>
-            <img src="res/images/datatype-mapping.png"/>
-            <li>If the size parameter is present for the SQL column object same value is applied for the Cassandra column.</li>
-            <li>If the table has a constraint of type PRIMARY or COMPOSITE_PRIMARY then create a PrimaryKey for the column family with the reference of the column(s) object.</li>
-            <li>A special case to be considered is, If the table has a constraint of type FOREIGN, then:</li>
-              <ul>
-                <li>Create a column family for each foreign key instance (called the reference column family).</li>
-                <li>Each column family has the primary key as referred table's primary key and the consequent columns are the referee table's primary key.</li>
-              </ul>
-          </ul>
-          <br>
-
-          <h4 id="SQLCons2NoSQLCons"><code>SQLCons2NoSQLCons</code> (SQL Constraint to NoSQL Constraint)</h4>
-          <ul>
-            <li>This rule applies to the SQL’s Constraints and to the Cassandra’s Constraints.</li>
-            <li>This rule applies to each constraint object present in the SQL table, and it takes the Constraint object and checks if the constraint is primary key constraint if yes, it creates a Cassandra primary key object.</li>
-          </ul>
-          <br>
-
-          <h4 id="SQLCell2NoSQLCell"><code>SQLCell2NoSQLCell</code> (SQL Cell to NoSQL Cell)</h4>
-          <ul>
-            <li>This rule applies to the SQL’s Cells and to the Cassandra’s Cells.</li>
-            <li>This rule applies to each cell object present in the SQL table, and it takes the cell object and copies the value of the cell, and it creates a Cassandra cell object with the same value.</li>
-          </ul>
-          <br>
-
-          <h4 id="reading-data">Reading data</h4>
-          <ul>
-            <li>Read metadata of the current SQL Database.</li>
-            <li>Appropriately the objects for database, columns and constraints.</li>
-            <li>Read database to fetch data and store as following:</li>
-              <ul>
-                <li>Create a row object for each entry.</li>
-                <li>Create a cell object for each for that entry passing the column object name and the value.</li>
-                <li>Add the cell object to the list of cells in the row.</li>
-              </ul>
-          </ul>
-          <br>
-
-          <h4 id="transfer-data">Transferring data</h4>
-          <ul>
-            <li>Create a Row object using the current column family.</li>
-            <li>Create additional column(s) if required. Use uuid or timeuuid in the name to differentiate between same name columns.</li>
-            <li>Create a cell object for every entry in the row using the value. </li>
-            <li>Add the cells in the list of cells in the row.</li>
-            <li>If the current row entry is from a column family or table that has a constraint of type FOREIGN, then:</li>
-              <ul>
-                <li>Add a column in the row of the reference column family in which the Primary key is the referred value. Add the timestamp, or timeuuid in the column name to differentiate it.</li>
-                <li>Create the cell with the above column object and put the Primary Key of the current column family’s row.</li>
-                <li>Add the cell to the reference table’s row.</li>
-
-              </ul>
-          </ul>
       	</div>
 	      <div class="col-md-3" id="sidebar">
           <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix">
@@ -296,10 +211,6 @@
           </nav>
         </div>
       </div>
-      <!--
-      <p class="lead">Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS. A fixed navbar has been added with <code>padding-top: 60px;</code> on the <code>body > .container</code>.</p>
-      <p>Back to <a href="../sticky-footer">the default sticky footer</a> minus the navbar.</p>
-      -->
     </div>
 
     <!--
