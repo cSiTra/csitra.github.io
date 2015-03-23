@@ -128,14 +128,14 @@ h1, h2, h3, h4, h5, strong {
     font-weight: 500;
 }
 
-.purple,
+.blue,
 .orange,
 .red {
   font-weight: bold;
 }
 
-.purple {
-  color: #524470;
+.blue {
+  color: #0E0EFF;
 }
 
 .orange {

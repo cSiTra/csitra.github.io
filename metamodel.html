@@ -61,18 +61,18 @@
             <div class="panel-footer">SQL meta model</div>
           </div>
 
-          <p>What follows is the description of each element of the model and the model as a whole. A colour scheme is used in this part where <span class="purple">purple</span> represents the parent element and <span class="orange">orange</span> represents the child elements and a <span class="red">red</span> represents the properties of the parent.</p>
+          <p>What follows is the description of each element of the model and the model as a whole. A colour scheme is used in this part where <span class="blue">blue</span> represents the parent element and <span class="orange">orange</span> represents the child elements and a <span class="red">red</span> represents the properties of the parent.</p>
 
-          <p>The Key element of this model is a <span class="purple">Database</span>.
+          <p>The Key element of this model is a <span class="blue">Database</span>.
           <ul>
-            <li>Each <span class="purple">Database</span> has zero or more <span class="orange">Sequences</span> and <span class="orange">Tables</span>, and each <span class="orange">Sequence</span> and <span class="orange">Table</span> belong to exactly one <span class="purple">Database</span>. If <span class="purple">Database</span> is removed, so are all of its <span class="orange">Sequences</span> and <span class="orange">Tables</span>.</li>
+            <li>Each <span class="blue">Database</span> has zero or more <span class="orange">Sequences</span> and <span class="orange">Tables</span>, and each <span class="orange">Sequence</span> and <span class="orange">Table</span> belong to exactly one <span class="blue">Database</span>. If <span class="blue">Database</span> is removed, so are all of its <span class="orange">Sequences</span> and <span class="orange">Tables</span>.</li>
             <li>Each <span class="orange">Database</span> has a property that represents its <span class="red">name (Datatype: String)</span>.</li>
           </ul> 
           <br>
 
-          <p><span class="purple">Sequences</span>: are a feature of some database products which just creates unique values. It just increments a value and returns it.</p>
+          <p><span class="blue">Sequences</span>: are a feature of some database products which just creates unique values. It just increments a value and returns it.</p>
           <ul>
-            <li>Each <span class+"purple">Sequences</span> has a property that represents its <span class="red">name (Datatype: String)</span>.</li>
+            <li>Each <span class+"blue">Sequences</span> has a property that represents its <span class="red">name (Datatype: String)</span>.</li>
             <li>A property <span class="red">minValue (Datatype: int)</span>.</li>
             <li>A property <span class="red">maxValue (Datatype: long)</span>.</li>
             <li>A property <span class="red">incrementBy (Datatype: int)</span>.</li>
@@ -82,44 +82,44 @@
           </ul>
           <br>
 
-          <p><span class="purple">Table</span>: is data structure which has some properties and stores values in form of rows and columns</p>
+          <p><span class="blue">Table</span>: is data structure which has some properties and stores values in form of rows and columns</p>
           <ul>
-            <li>Each <span class="purple">Table</span> belongs to exactly to one Database and has zero or more <span class="orange">Constraints</span> and <span class="orange">Rows</span>, and each of these <span class="orange">Constraint</span> and <span class="orange">Row</span> belong to exactly that one <span class="purple">Table</span>. If <span class="purple">Table</span> is removed, so are all of its <span class="orange">Constraints</span> and <span class="orange">Rows</span>.</li>
-            <li>Additionally each <span class="purple">Table</span> has one or more <span class="orange">Columns</span>, and each of these <span class="orange">Column</span> belong to exactly that one <span class="purple">Table</span>. If <span class="purple">Table</span> is removed, so are all of its <span class="orange">Columns</span>.</li>
-            <li>Each <span class="purple">Table</span> has a property that represents its <span class="red">name (Datatype: String)</span>.</li>     
+            <li>Each <span class="blue">Table</span> belongs to exactly to one Database and has zero or more <span class="orange">Constraints</span> and <span class="orange">Rows</span>, and each of these <span class="orange">Constraint</span> and <span class="orange">Row</span> belong to exactly that one <span class="blue">Table</span>. If <span class="blue">Table</span> is removed, so are all of its <span class="orange">Constraints</span> and <span class="orange">Rows</span>.</li>
+            <li>Additionally each <span class="blue">Table</span> has one or more <span class="orange">Columns</span>, and each of these <span class="orange">Column</span> belong to exactly that one <span class="blue">Table</span>. If <span class="blue">Table</span> is removed, so are all of its <span class="orange">Columns</span>.</li>
+            <li>Each <span class="blue">Table</span> has a property that represents its <span class="red">name (Datatype: String)</span>.</li>     
           </ul>
           <br>
 
-          <p><span class="purple">Row</span>: represents a single, implicitly structured data item in a Table.</p>
+          <p><span class="blue">Row</span>: represents a single, implicitly structured data item in a Table.</p>
           <ul>
-            <li>Each <span class="purple">Row</span> belongs to exactly to one Table and has zero or more <span class="orange">Cells</span>, and each of these <span class="orange">Cells</span> belong to exactly that one <span class="purple">Row</span>. If <span class="purple">Row</span> is removed, so are all of its <span class="orange">Cells</span>.</li>        
+            <li>Each <span class="blue">Row</span> belongs to exactly to one Table and has zero or more <span class="orange">Cells</span>, and each of these <span class="orange">Cells</span> belong to exactly that one <span class="blue">Row</span>. If <span class="blue">Row</span> is removed, so are all of its <span class="orange">Cells</span>.</li>        
           </ul>
           <br>
 
-          <p><span class="purple">Constraints</span>: are used to specify rules for the data in a Table.</p>
+          <p><span class="blue">Constraints</span>: are used to specify rules for the data in a Table.</p>
           <ul>
-            <li>Each <span class="purple">Constraint</span> belongs to exactly to one Table and has zero or more <span class="orange">Columns</span> associated to it, and each of these <span class="orange">Columns</span> may or may not refer the <span class="purple">Constraint</span> </li>
-            <li>Each <span class="purple">Constraint</span> has a property that represents its <span class="red">name (Datatype: String)</span>.</li>
+            <li>Each <span class="blue">Constraint</span> belongs to exactly to one Table and has zero or more <span class="orange">Columns</span> associated to it, and each of these <span class="orange">Columns</span> may or may not refer the <span class="blue">Constraint</span> </li>
+            <li>Each <span class="blue">Constraint</span> has a property that represents its <span class="red">name (Datatype: String)</span>.</li>
             <li>A property that represents its <span class="red">type (Datatype: enum-ConstraintType)</span>.</li>
             <li>And a property that refers the columns to which it is associated with presents called  <span class="red">reference (Datatype: String)</span>.</li>
           </ul>
           <br>
 
-          <p><span class="purple">Columns</span>: are a set of data values of a particular simple type, one for each Row of the Table. They provide the structure according to which the Rows are composed.</p>
+          <p><span class="blue">Columns</span>: are a set of data values of a particular simple type, one for each Row of the Table. They provide the structure according to which the Rows are composed.</p>
           <ul>
-            <li>Each <span class="purple">Column</span> belongs to exactly to one Table and has at least one <span class="orange">Cell</span> If <span class="purple">Column</span> is removed, so are all of its <span class="orange">Cells</span>.</li>
-            <li>Additionally each <span class="purple">Column</span> has zero or more <span class="orange">Constraints</span>, and each of these <span class="orange">Constraint</span> belong to exactly that one <span class="purple">Column</span>. If <span class="purple">Column</span> is removed, so are all of its <span class="orange">Constraints</span>.</li>
-            <li>Each <span class="purple">Column</span> has a property that represents its <span class="red">name (Datatype: String)</span>.</li>
+            <li>Each <span class="blue">Column</span> belongs to exactly to one Table and has at least one <span class="orange">Cell</span> If <span class="blue">Column</span> is removed, so are all of its <span class="orange">Cells</span>.</li>
+            <li>Additionally each <span class="blue">Column</span> has zero or more <span class="orange">Constraints</span>, and each of these <span class="orange">Constraint</span> belong to exactly that one <span class="blue">Column</span>. If <span class="blue">Column</span> is removed, so are all of its <span class="orange">Constraints</span>.</li>
+            <li>Each <span class="blue">Column</span> has a property that represents its <span class="red">name (Datatype: String)</span>.</li>
             <li>A property that represents its <span class="red">type (Datatype: enum-DataType)</span>.</li>
             <li>A property that represents its <span class="red">size (Datatype: String)</span>.</li>
             <li>And a property that represents if it is a null called <span class="red">nullable (Datatype: boolean)</span>.</li>
           </ul>
           <br>
 
-          <p><span class="purple">Cells</span>: a database table is composed of rows and columns of Cells, they hold the actual data.</p>
+          <p><span class="blue">Cells</span>: a database table is composed of rows and columns of Cells, they hold the actual data.</p>
           <ul>
-            <li>Each <span class="purple">Cell</span> belongs to exactly to one Row and one Column of a Table.</li>
-            <li>Each <span class="purple">Cell</span> has a property to store data called, <span class="red">value (Datatype: String)</span>.</li>
+            <li>Each <span class="blue">Cell</span> belongs to exactly to one Row and one Column of a Table.</li>
+            <li>Each <span class="blue">Cell</span> has a property to store data called, <span class="red">value (Datatype: String)</span>.</li>
           </ul>
           <br>
 
@@ -131,58 +131,58 @@
             </div>
             <div class="panel-footer">Cassandra meta model</div>
           </div>
-          <p>What follows is the description of each element of the model and the model as a whole. A colour scheme is used in this part where <span class="purple">purple</span> represents the parent element and <span class="orange">orange</span> represents the child elements and a <span class="red">red</span> represents the properties of the parent.</p>
+          <p>What follows is the description of each element of the model and the model as a whole. A colour scheme is used in this part where <span class="blue">blue</span> represents the parent element and <span class="orange">orange</span> represents the child elements and a <span class="red">red</span> represents the properties of the parent.</p>
 
-          <p>The Key element of this model is a <span class="purple">KeySpace</span> (which is the container for your application data).</p> 
+          <p>The Key element of this model is a <span class="blue">KeySpace</span> (which is the container for your application data).</p> 
           <ul>
-            <li>Each <span class="purple">KeySpace</span> has zero or more <span class="orange">Indexes</span> and <span class="orange">Options</span>, and each <span class="orange">Index</span> and <span class="orange">Option</span> belong to exactly one <span class="purple">KeySpace</span>. If <span class="purple">KeySpace</span> is removed, so are all of its <span class="orange">Indexes</span> and <span class="orange">Options</span>.</li>
-            <li>Additionally and more importantly each <span class="purple">KeySpace</span> has one or more, and each <span class="orange">ColumnFamily</span> belong to exactly one <span class="purple">KeySpace</span>. If <span class="purple">KeySpace</span> is removed, so are all of its ColumnFamilies.</li>
-            <li>Each <span class="purple">KeySpace</span> has a property that represents its <span class="red">name (Datatype: String)</span>.</li>
+            <li>Each <span class="blue">KeySpace</span> has zero or more <span class="orange">Indexes</span> and <span class="orange">Options</span>, and each <span class="orange">Index</span> and <span class="orange">Option</span> belong to exactly one <span class="blue">KeySpace</span>. If <span class="blue">KeySpace</span> is removed, so are all of its <span class="orange">Indexes</span> and <span class="orange">Options</span>.</li>
+            <li>Additionally and more importantly each <span class="blue">KeySpace</span> has one or more, and each <span class="orange">ColumnFamily</span> belong to exactly one <span class="blue">KeySpace</span>. If <span class="blue">KeySpace</span> is removed, so are all of its ColumnFamilies.</li>
+            <li>Each <span class="blue">KeySpace</span> has a property that represents its <span class="red">name (Datatype: String)</span>.</li>
           </ul>
           <br>
 
-          <p><span class="purple">ColumnFamily</span>: is a NoSQL object that contains columns of related data. It is a tuple (pair) that consists of a key-value pair, where the key is mapped to a value that is a set of columns. In analogy with relational databases, a standard column family is as a "table"</p>
+          <p><span class="blue">ColumnFamily</span>: is a NoSQL object that contains columns of related data. It is a tuple (pair) that consists of a key-value pair, where the key is mapped to a value that is a set of columns. In analogy with relational databases, a standard column family is as a "table"</p>
           <ul>
-            <li>Each <span class="purple">ColumnFamily</span> belongs to exactly to one KeySpace and has zero or more <span class="orange">PrimaryKeys</span> and <span class="orange">Rows</span>, and each of these PrimaryKey and <span class="orange">Row</span> belong to exactly that one <span class="purple">ColumnFamily</span>. If <span class="purple">ColumnFamily</span> is removed, so are all of its <span class="orange">PrimaryKeys</span> and <span class="orange">Rows</span>.</li>
-            <li>Additionally each <span class="purple">ColumnFamily</span> has one or more <span class="orange">Columns</span>, and each of these <span class="orange">Column</span> belong to exactly that one <span class="purple">ColumnFamily</span>. If <span class="purple">ColumnFamily</span> is removed, so are all of its <span class="orange">Columns</span>.</li>
-            <li>Each <span class="purple">ColumnFamily</span> has a property that represents its <span class="red">name (Datatype: String)</span>.</li>
+            <li>Each <span class="blue">ColumnFamily</span> belongs to exactly to one KeySpace and has zero or more <span class="orange">PrimaryKeys</span> and <span class="orange">Rows</span>, and each of these PrimaryKey and <span class="orange">Row</span> belong to exactly that one <span class="blue">ColumnFamily</span>. If <span class="blue">ColumnFamily</span> is removed, so are all of its <span class="orange">PrimaryKeys</span> and <span class="orange">Rows</span>.</li>
+            <li>Additionally each <span class="blue">ColumnFamily</span> has one or more <span class="orange">Columns</span>, and each of these <span class="orange">Column</span> belong to exactly that one <span class="blue">ColumnFamily</span>. If <span class="blue">ColumnFamily</span> is removed, so are all of its <span class="orange">Columns</span>.</li>
+            <li>Each <span class="blue">ColumnFamily</span> has a property that represents its <span class="red">name (Datatype: String)</span>.</li>
             <li>And a property that to add a comment to it called, <span class="red">comment (Datatype: String)</span>.</li>
           </ul>
           <br>
 
-          <p><span class="purple">Row</span>: represents a single, implicitly structured data item in a ColumnFamily.</p>
+          <p><span class="blue">Row</span>: represents a single, implicitly structured data item in a ColumnFamily.</p>
           <ul>
-            <li>Each <span class="purple">Row</span> belongs to exactly to one ColumnFamily and has zero or more <span class="orange">Cells</span>, and each of these <span class="orange">Cells</span> belong to exactly that one <span class="purple">Row</span>. If <span class="purple">Row</span> is removed, so are all of its <span class="orange">Cells</span>.</li>
+            <li>Each <span class="blue">Row</span> belongs to exactly to one ColumnFamily and has zero or more <span class="orange">Cells</span>, and each of these <span class="orange">Cells</span> belong to exactly that one <span class="blue">Row</span>. If <span class="blue">Row</span> is removed, so are all of its <span class="orange">Cells</span>.</li>
           </ul>
           <br>
 
-          <p><span class="purple">PrimaryKeys</span>: are used to specify primary keys of a ColumnFamily.</p>
+          <p><span class="blue">PrimaryKeys</span>: are used to specify primary keys of a ColumnFamily.</p>
           <ul>
-            <li>Each <span class="purple">PrimaryKey</span> belongs to exactly to one ColumnFamily and has zero or more <span class="orange">Columns</span> associated to it. </li>
+            <li>Each <span class="blue">PrimaryKey</span> belongs to exactly to one ColumnFamily and has zero or more <span class="orange">Columns</span> associated to it. </li>
           </ul>
           <br>
 
-          <p><span class="purple">Columns</span>: in Cassandra a column is a pair of name and data values of a particular simple type, one for each Row of the ColumnFamily.</p>
+          <p><span class="blue">Columns</span>: in Cassandra a column is a pair of name and data values of a particular simple type, one for each Row of the ColumnFamily.</p>
           <ul>
-            <li>Each <span class="purple">Column</span> belongs to exactly to one <span class="purple">Column</span>Family and has at least one <span class="orange">Cell</span>. If <span class="purple">Column</span> is removed, so are all of its <span class="orange">Cells</span>.</li>
-            <li>Additionally each <span class="purple">Column</span> may or may not be a PrimaryKey.</li>
-            <li>Each <span class="purple">Column</span> has a property that represents its <span class="red">name (Datatype: String)</span>.</li>
+            <li>Each <span class="blue">Column</span> belongs to exactly to one <span class="blue">Column</span>Family and has at least one <span class="orange">Cell</span>. If <span class="blue">Column</span> is removed, so are all of its <span class="orange">Cells</span>.</li>
+            <li>Additionally each <span class="blue">Column</span> may or may not be a PrimaryKey.</li>
+            <li>Each <span class="blue">Column</span> has a property that represents its <span class="red">name (Datatype: String)</span>.</li>
             <li>A property that represents its <span class="red">datatype (Datatype: enum-Type)</span>.</li>
             <li>A property that represents its <span class="red">size (Datatype: String)</span>.</li>
           </ul>
           <br>
 
-          <p><span class="purple">Cells</span>: is an entity they hold the actual data.</p>
+          <p><span class="blue">Cells</span>: is an entity they hold the actual data.</p>
           <ul>
-            <li>Each <span class="purple">Cell</span> belongs to exactly to one Row and one Column of a ColumnFamily.</li>
-            <li>Each <span class="purple">Cell</span> has a property to store data called, <span class="red">value (Datatype: String)</span>.</li>
+            <li>Each <span class="blue">Cell</span> belongs to exactly to one Row and one Column of a ColumnFamily.</li>
+            <li>Each <span class="blue">Cell</span> has a property to store data called, <span class="red">value (Datatype: String)</span>.</li>
           </ul>
           <br>
 
-          <p><span class="purple">Index</span>: A key index, speeds up random access to data in the ColumnFamily. In Cassandra, the primary index for a column family is the index of its row keys.</p>
+          <p><span class="blue">Index</span>: A key index, speeds up random access to data in the ColumnFamily. In Cassandra, the primary index for a column family is the index of its row keys.</p>
           <ul>
-            <li>Each <span class="purple">Index</span> belongs to exactly to one KeySpace.</li>
-            <li>Each <span class="purple">Index</span> has a property to represent its <span class="red">name (Datatype: String)</span>.</li>
+            <li>Each <span class="blue">Index</span> belongs to exactly to one KeySpace.</li>
+            <li>Each <span class="blue">Index</span> has a property to represent its <span class="red">name (Datatype: String)</span>.</li>
             <li>And a property that refers the columns to which it is associated with presents called <span class="red">reference (Datatype: String)</span>.</li>
           </ul>  
 
