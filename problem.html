@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>cSiTra</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="res/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="res/css/sticky-footer-navbar.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">cSiTra</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="index.html">About</a></li>
+            <li><a href="https://github.com/Xayna/cSiTra">Git</a></li>
+            <li><a href="team.html">Team</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <!-- Begin page content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9" id="content">
+          <h2 id="design">Problems we faced and the potential solution</h2>
+          <hr>
+          <h3>Mapping foreign key</h3>
+          <p>Cassandra does not support the concept of foreign keys and RDBMS store data in a related manner. This was the biggest problem we faced in this project as a whole. If we just leave the foreign key related data and only transfer the rest it will not make any sense. To preserve this cSiTra comes up with a novel solution.</p>
+
+          <p>The solution is to simulate the purpose of foreign key (not the foreign key itself) by creating a Column Family to represent each reference where the foreign key of that reference is the primary key in the created Column Family and all related primary key in the original reference table will be inserted as columns in this Column Family.</p>
+
+          <h3>Mismatch-in-conventions</h3>
+          <p>Another problem was which occurred during the implementation was that some datatype values are represented in different ways in different SQL databases. For example the Boolean type in some databases is represented as (1, 0), in another (true, false) and some other database used the first letter (t,f). So we had to check the value of the datatype and then actually convert it into Cassandra equivalents (in the example Boolean case its (true ,false)).</p>   
+
+          <h3>Data referencing</h3>
+          <p>While implementing cSiTra we faced a problem with referencing three key items of Cassandra, the column families, Primary keys and column combination. According to the Cassandra meta-model we designed, if we have a column that is said to be part of primary key in a column family then we need to add this column object to both columns field in column family & to that of the primary key objects. The problem we faced was that if such a column object was added to both primary key object and column family object, the reference to this column object would be deleted from either the primary key object or Column Family object depending on the order in which we were trying to add the column object.</p>
+
+          <p>The reason for this problem is that we used containment relations for both of the columns and the primary key related to the column family. And a possible solution is to change the relations.</p>
+
+          <h3>Data Transfer</h3>
+          <p>We faced a performance problem with large amount of data. If the table contains more than 150 ,000 record, the time to read and transfer the data threw  Sitra will start to increase exponentially. This happened because of using lists and objects in reading and transferring the schema and the data.</p>
+
+          <p>Proposed solutions:</p>
+          <ul>
+            <li>Transfer the structure ( schema ) only using SiTra and find another way to transfer the data   like use two processes one to read from sql db and write into a file and another one will read from the file into Cassandra db. When the first process is done from writing it will terminate it self.  For the second process we will have a timer to set a timeout to terminate if the process remained ideal for a certain amount of time.</li>
+
+            <li>Another solution is to read the sql schema and data into a json format files. Each file will represent a table with its data. The created json file  will be passed to SiTra and the output will be another json file but with data formatted in Cassandra structure. These json files will be parsed and inserted to Cassandra to create the schema and its tables and data. Since there is no dependency in Cassandra between the tables as well in the sql db side  we can use multi threads to run the transformation where each thread will read a table, transform it and then inserted into Cassandra.</li>
+
+            </li>
+          </ul>         
+      	</div>
+	      <div class="col-md-3" id="sidebar">
+          <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix">
+            <ul class="nav bs-docs-sidenav">
+              <li><a href="index.html">A Tale</a></li>
+              <li>
+                <a href="design.html">Design and Implementation</a>
+              </li>
+              <li>
+                <a href="results.html">Test results and evaluation</a>
+              </li>  
+              <li class="active">
+                <a href="problem.html">Problem and solution</a>
+              </li>
+              <li>
+                <a href="futurework.html">Future works</a>
+              </li>  
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <!--
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted">Place sticky footer content here.</p>
+      </div>
+    </footer>
+    -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="res/js/bootstrap.min.js"></script>
+  </body>
+</html>

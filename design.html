@@ -39,7 +39,7 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
             <li class="active"><a href="index.html">About</a></li>
-            <li><a href="#about">Download</a></li>
+            <li><a href="https://github.com/Xayna/cSiTra">Git</a></li>
             <li><a href="team.html">Team</a></li>
           </ul>
         </div><!--/.nav-collapse -->
@@ -50,10 +50,19 @@
     <div class="container">
       <div class="row">
         <div class="col-md-9" id="content">
-          <h2 id="metamodel">Meta Model</h2>
+          <h2 id="design">Design</h2>
+          <hr>
+          <p><strong>cSiTra</strong> is written in Java and uses the MVC design pattern in its approach. The cSiTra system is made up of 9 different components interacting with each other. The following five components: the RDBMS, Cassandra, their corresponding meta-models (SQL meta-model and the Cassadra meta-model) and the transformation rules for SiTra make up the model. The SQL service, Cassandra service and the Main_SiTra make up the controllers, and it offers one component as the view that is the UI. In the next section each of these components are elaborated on what they are and what exactly they do.</p>
+
+          <p>The <strong>RDBMS</strong>: As to what this is, the relational database management system is the food(or source) for cSiTra, (as to what exactly they do) the RDBMS supplies the data and the related schema that are supposed to be processed and made as Cassandra equivalents and pushed into Cassandra.</p>
+
+          <p>The data in an RDBMS are usually nothing but alphanumeric values that exists as cells, and carry no meaning all by themselves, however these cells are arranged in rows and columns which give them some meaning and in turn these rows and columns form a table. Another way to say this is that the data is stored as rows of cells in the tables made meaningful of columns. And these tables relate to one another using the concept of constrains, where a constraint is a particular column in a table that can be used by other tables to relate each other. The following image shows a typical relational database:</p>
+
+          <p>The <strong>Cassandra</strong>: Cassandra is nothing but just another database, however it’s principally very different if we compare it with an RDBMS. Though both Cassandra and RDBMS are nothing but just databases and basically just store “data” in them the approach they take to achieve this is very different. To give a quick real world analogy consider that a person wishes to travel from London to Paris for a holiday, this person can choose between taking a train or to fly in an airplane, though the end result is still nothing but reaching Paris from London for a holiday, the means by which he can achieve are principally very different from one another (and yes of course both train and an airplane have their own pros and cons). Cassandra is built with a different point of view in regard to the data it stores. Cassandra just does not store data in a relational manner and has its own unique way. The data in Cassandra exists as a pair of key and value, where value is the actual alphanumeric like data (it may also be something which is not exactly alphanumeric) and a key is the key to identify these values. These key value pairs are stored in a KeySpace which is the main entity of Cassandra. As the name says a KeySpace is a space for storing key-value pairs, and yes it would be highly illogical to just suspend the data randomly in a space and these key-value pairs would need a meaningful structure to sit on. To solve this problem a KepSpace offers structures called as Column families to hold the key-value pairs and it has some properties of its own that help to identify them. The following is an image that shows a typical KeySpace in Cassandra.</p>
+          <h3 id="metamodel">Meta Model</h3>
           <hr>
           <h4 id="sql-metamodel">SQL meta-model</h4>
-          <p>The following image represents the SQL meta-model:</p>
+          <p>The data and schema we fetch from the RDBMS must be preprocessed and given a form and shape before we start transforming it into Cassandra equivalents, and the SQL meta-model provides a container for this need. The SQL meta-model is nothing but a subset of the RDBMS data model and it represents how the RDBMS data and related schema will exists in context of programming environment (which is Java in our case). An instance of a SQL meta-model will be used as a container to store the data and schema we fetch from the RDBMS and these object are then ready for further processing. The following is the image of cSiTra’s SQL meta-model and what follows it is a brief description about each of its subcomponents.</p>
           <div class="panel panel-default">
             <div class="panel-body">
               <img src="res/images/sql.PNG">
@@ -124,7 +133,7 @@
           <br>
 
           <h4 id="nosql-metamodel">Cassandra meta-model</h4>
-          <p>The following image represents the Cassandra (NoSQL) meta-model:</p>
+          <p>The main objective of the Cassandra meta-model is as same as that of the SQL meta-model. Cassandra meta-model provides a container on which the processed data can sit before it is pushed to Cassandra. The Cassandra meta-model is nothing but a subset of the Cassandra data model and it represents how this data will exists in context of programming environment (which is Java in our case). An instance of a Cassandra meta-model will be used as a container to store the processed data and these objects are then pushed into Cassandra. The following is the image of cSiTra’s Cassandra meta-model and what follows it is a brief description about each of its subcomponents.</p>
           <div class="panel panel-default">
             <div class="panel-body">
               <img src="res/images/nosql.PNG">
@@ -184,28 +193,106 @@
             <li>Each <span class="blue">Index</span> belongs to exactly to one KeySpace.</li>
             <li>Each <span class="blue">Index</span> has a property to represent its <span class="red">name (Datatype: String)</span>.</li>
             <li>And a property that refers the columns to which it is associated with presents called <span class="red">reference (Datatype: String)</span>.</li>
-          </ul>  
+          </ul>
+          <br>
+          <h2 id="transformation">Transformation rules</h2>
+          <hr>
+          <p>Basically a <strong>transformation rule</strong> is, the principle in logic establishing the conditions under which one statement can be derived or validly deduced from one or more other statements especially in a formalized language.<p>
+
+          <p><strong>SiTra</strong> is a simple Java library for supporting a programming approach to writing transformations aiming to, firstly use Java for writing transformations, and secondly, to provide a minimal framework for the execution of transformations. SiTra consists of two interfaces and a class that implements a transformation algorithm. The aim is to facilitate a style of programming that incorporates the concept of transformation rules.</p>
+
+          <p><strong>Transformer</strong> – the primary transformation object; it contains a collection of rules, and manages the process of transforming source model objects into target model objects.</p>
+
+          <p><strong>Rule</strong> – a rule deals with specific detail of how to map an object from a source model into an object of the target model. One or more rules may or may be applicable for the same type of object and it is necessary to have a means to determine the applicability of a rule for a specific object, not just its type.</p>
+
+          <p>These are the rules to be followed to convert SQL to Cassandra:</p><br>
+
+          <h4 id="Database2Keyspace"><code>Database2Keyspace</code> (Database to Keyspace)</h4>
+          <ul>
+            <li>This rule applies to the SQL database’s schema and to the Cassandra’s Keyspace.</li>
+            <li>This rule takes the Database object and copies its schema name, and creates a new keyspace object with the same name as the SQL Database Schema.</li>
+          </ul>
+          <br>
+
+          <h4 id="Table2ColumnFamily"><code>Table2ColumnFamily</code> (Tables to ColumnFamily)</h4>
+          <ul>
+            <li>This rule applies to the SQL table and to the Cassandra’s column family.</li>
+            <li>This rule, for each table in the SQL, takes the table object and creates a column family, in the keyspace, with the same name as the table.</li>
+            <li>It adds any options to the table if specified.</li>
+          </ul>
+          <br>
+
+          <h4 id="SqlCol2NoSqlCol"><code>SqlCol2NoSqlCol</code> (SQL Column to NoSQL Column)</h4>
+          <ul>
+            <li>This rule applies to the SQL columns and to the Cassandra columns.</li>
+            <li>This rule applies to each column present in the SQL table object, and it takes a column object and creates a Cassandra column object with the same name.</li>
+            <li>The following table represents the list of SQL Data types and the corresponding NoSQL Data types to which they are mapped.</li>
+            <img src="res/images/datatype-mapping.png"/>
+            <li>If the size parameter is present for the SQL column object same value is applied for the Cassandra column.</li>
+            <li>If the table has a constraint of type PRIMARY or COMPOSITE_PRIMARY then create a PrimaryKey for the column family with the reference of the column(s) object.</li>
+            <li>A special case to be considered is, If the table has a constraint of type FOREIGN, then:</li>
+              <ul>
+                <li>Create a column family for each foreign key instance (called the reference column family).</li>
+                <li>Each column family has the primary key as referred table's primary key and the consequent columns are the referee table's primary key.</li>
+              </ul>
+          </ul>
+          <br>
+
+          <h4 id="SQLCons2NoSQLCons"><code>SQLCons2NoSQLCons</code> (SQL Constraint to NoSQL Constraint)</h4>
+          <ul>
+            <li>This rule applies to the SQL’s Constraints and to the Cassandra’s Constraints.</li>
+            <li>This rule applies to each constraint object present in the SQL table, and it takes the Constraint object and checks if the constraint is primary key constraint if yes, it creates a Cassandra primary key object.</li>
+          </ul>
+          <br>
+
+          <h4 id="SQLCell2NoSQLCell"><code>SQLCell2NoSQLCell</code> (SQL Cell to NoSQL Cell)</h4>
+          <ul>
+            <li>This rule applies to the SQL’s Cells and to the Cassandra’s Cells.</li>
+            <li>This rule applies to each cell object present in the SQL table, and it takes the cell object and copies the value of the cell, and it creates a Cassandra cell object with the same value.</li>
+          </ul>
+          <br>
+
+          <h4 id="SQLDatatype2NoSQLDatatype"><code>SQLDatatype2NoSQLDatatype</code> (SQL data type to NoSQL data type)</h4>
+          <ul>
+            <li>This rule applies to the SQL’s data types and to that of the Cassandra.</li>
+            <li>This rule applies to each data type present in the SQL columns, and its values is matched to an equivalent in Cassandra.</li>
+          </ul>
+          <br>
+
+          <h4 id="SQLRows2NoSQLRows"><code>SQLRows2NoSQLRows</code> (SQL rows to NoSQL rows)</h4>
+          <ul>
+            <li>This rule applies to the SQL’s rows and to that of the Cassandra.</li>
+            <li>This rule mainly comes into picture in while reading the data from the database row by row, and each of these rows then converted as corresponding Cassandra rows.</li>
+          </ul>
+          <br>
+
+          <h3 id="implementation">Implementation</h3><hr>
+          <img src="res/images/implementation.jpg" width="100%"/><br>
+
+          <p><strong>The SQL service</strong>: The SQL service is a class in cSiTra that fetches data and schema from the RDBMS, it basically establishes a connection with the RDBMS and instantiates an object of the SQL meta-model, fetches the data from RDBMS and stores them as SQL java objects are produced this way. These objects are then passed to SiTra for transformation. The following pseudo code gives a general idea about the SQL Service class.</p>
+
+          <p><strong>The Main_Sitra</strong>: This is the Main class of the cSiTra. It’s the master controller, it inputs connection parameters from the user interface, utilizes the SQL and Cassandra service to fetch and push the data from the respective databases and uses SiTra and the corresponding transformation rules to transform the source object to target object. The following snippet gives an overall idea.</p>
+
+          <p><strong>The Cassandra service</strong>: This is a class in cSiTra which establishes a connection with the Cassandra and it creates the KeySpace and pushes the data into it. The following pseudo code gives a general idea about this class.</p>
+
+          <p><strong>The UI</strong>: The cSiTra offers only one component as the view. It’s the following user interface (shown as an image), it has fields for the user to enter the connection parameters for both RDMS and Cassandra databases.</p>
+
       	</div>
 	      <div class="col-md-3" id="sidebar">
           <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix">
             <ul class="nav bs-docs-sidenav">
-              <li><a href="index.html">Background</a></li>
+              <li><a href="index.html">A Tale</a></li>
               <li class="active">
-                <a href="metamodel.html">Meta-model</a>
-                <ul class="nav">
-                  <li><a href="metamodel.html#sql-metamodel">SQL Meta-model</a></li>
-                  <li><a href="metamodel.html#nosql-metamodel">NoSQL Meta-model</a></li>
-                </ul>
+                <a href="design.html">Design and Implementation</a>
               </li>
               <li>
-                <a href="transformation.html">Transformation rules</a>
-                <ul class="nav">
-                  <li><a href="transformation.html#Database2Keyspace">Database to Keyspace</a></li>
-                  <li><a href="transformation.html#Table2ColumnFamily">Tables to ColumnFamily</a></li>
-                  <li><a href="transformation.html#SqlCol2NoSqlCol">SQL Column to NoSQL Column</a></li>
-                  <li><a href="transformation.html#SQLCons2NoSQLCons">SQL Constraint to NoSQL Constraint</a></li>
-                  <li><a href="transformation.html#SQLCell2NoSQLCell">SQL Cell to NoSQL Cell</a></li>
-                </ul>
+                <a href="results.html">Test results and evaluation</a>
+              </li>  
+              <li>
+                <a href="problem.html">Problem and solution</a>
+              </li>
+              <li>
+                <a href="futurework.html">Future works</a>
               </li>  
             </ul>
           </nav>
