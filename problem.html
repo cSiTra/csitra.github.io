@@ -34,7 +34,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">cSiTra</a>
+				<a class="navbar-brand" href="index.html"><span style="font-family:Lucida Console; color:DarkOrange">c</span><span style="font-family:Lucida Console; color:DodgerBlue">SiTra</span></a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -53,29 +53,47 @@
           <h2 id="design">Problems we faced and the potential solution</h2>
           <hr>
           <h3>Mapping foreign key</h3>
-          <p>Cassandra does not support the concept of foreign keys and RDBMS store data in a related manner. This was the biggest problem we faced in this project as a whole. If we just leave the foreign key related data and only transfer the rest it will not make any sense. To preserve this cSiTra comes up with a novel solution.</p>
+          <p align="justify">Cassandra does not support the concept of foreign keys and RDBMS store data in a related manner. This was the biggest problem we faced in this project as a whole. If we just leave the foreign key related data and only transfer the rest it will not make any sense. To preserve this <span style="font-family:Lucida Console; color:DarkOrange">c</span><span style="font-family:Lucida Console; color:DodgerBlue">SiTra</span> comes up with a novel solution.</p>
 
-          <p>The solution is to simulate the purpose of foreign key (not the foreign key itself) by creating a Column Family to represent each reference where the foreign key of that reference is the primary key in the created Column Family and all related primary key in the original reference table will be inserted as columns in this Column Family.</p>
+          <p align="justify">The solution is to simulate the purpose of foreign key (not the foreign key itself) by creating a Column Family to represent each reference where the foreign key of that reference is the primary key in the created Column Family and all related primary key in the original reference table will be inserted as columns in this Column Family.</p>
 
           <h3>Mismatch-in-conventions</h3>
-          <p>Another problem was which occurred during the implementation was that some datatype values are represented in different ways in different SQL databases. For example the Boolean type in some databases is represented as (1, 0), in another (true, false) and some other database used the first letter (t,f). So we had to check the value of the datatype and then actually convert it into Cassandra equivalents (in the example Boolean case its (true ,false)).</p>   
+          <p align="justify">Another problem was which occurred during the implementation was that some datatype values are represented in different ways in different SQL databases. For example the Boolean type in some databases is represented as (1, 0), in another (true, false) and some other database used the first letter (t,f). So we had to check the value of the datatype and then actually convert it into Cassandra equivalents (in the example Boolean case its (true, false)).</p>   
 
           <h3>Data referencing</h3>
-          <p>While implementing cSiTra we faced a problem with referencing three key items of Cassandra, the column families, Primary keys and column combination. According to the Cassandra meta-model we designed, if we have a column that is said to be part of primary key in a column family then we need to add this column object to both columns field in column family & to that of the primary key objects. The problem we faced was that if such a column object was added to both primary key object and column family object, the reference to this column object would be deleted from either the primary key object or Column Family object depending on the order in which we were trying to add the column object.</p>
+          <p align="justify">While implementing <span style="font-family:Lucida Console; color:DarkOrange">c</span><span style="font-family:Lucida Console; color:DodgerBlue">SiTra</span> we faced a problem with referencing three key items of Cassandra, the column families, Primary keys and column combination. According to the Cassandra meta-model we designed, if we have a column that is said to be part of primary key in a column family then we need to add this column object to both columns field in column family & to that of the primary key objects. The problem we faced was that if such a column object was added to both primary key object and column family object, the reference to this column object would be deleted from either the primary key object or Column Family object depending on the order in which we were trying to add the column object.</p>
 
-          <p>The reason for this problem is that we used containment relations for both of the columns and the primary key related to the column family. And a possible solution is to change the relations.</p>
+          <p align="justify">The reason for this problem is that we used containment relations for both of the columns and the primary key related to the column family. And a possible solution is to change the relations.</p>
 
           <h3>Data Transfer</h3>
-          <p>We faced a performance problem with large amount of data. If the table contains more than 150 ,000 record, the time to read and transfer the data threw  Sitra will start to increase exponentially. This happened because of using lists and objects in reading and transferring the schema and the data.</p>
+          <p align="justify">We faced a performance problem with large amount of data. If the table contains more than 150,000 record, the time to read and transfer the data threw SiTra will start to increase exponentially. This happened because of using lists and objects in reading and transferring the schema and the data.</p>
 
-          <p>Proposed solutions:</p>
+          <p align="justify">Proposed solutions:</p>
           <ul>
-            <li>Transfer the structure ( schema ) only using SiTra and find another way to transfer the data   like use two processes one to read from sql db and write into a file and another one will read from the file into Cassandra db. When the first process is done from writing it will terminate it self.  For the second process we will have a timer to set a timeout to terminate if the process remained ideal for a certain amount of time.</li>
+            <li align="justify">Transfer the structure (schema) only using SiTra and find another way to transfer the data, like use two processes one to read from SQL database and write into a file and another one will read from the file into Cassandra database. When the first process is done from writing it will terminate itself. For the second process we will have a timer to set a timeout to terminate if the process remained ideal for a certain amount of time.</li>
 
-            <li>Another solution is to read the sql schema and data into a json format files. Each file will represent a table with its data. The created json file  will be passed to SiTra and the output will be another json file but with data formatted in Cassandra structure. These json files will be parsed and inserted to Cassandra to create the schema and its tables and data. Since there is no dependency in Cassandra between the tables as well in the sql db side  we can use multi threads to run the transformation where each thread will read a table, transform it and then inserted into Cassandra.</li>
+            <li align="justify">Another solution is to read the SQL schema and data into a JSON format files. Each file will represent a table with its data. The created JSON file will be passed to SiTra and the output will be another JSON file but with data formatted in Cassandra structure. These JSON files will be parsed and inserted to Cassandra to create the column families and insert data.</li>
 
             </li>
-          </ul>         
+          </ul>
+          
+          
+          <h2 id="design">Future work</h2>
+          <hr>
+          <p align="justify">As a part of the future work, the <span style="font-family:Lucida Console; color:DarkOrange">c</span><span style="font-family:Lucida Console; color:DodgerBlue">SiTra</span> Team has planned the following, and also they encourage fellow developers who are interested to try them:</p>
+          <p align="justify"><b>Enhance performance:</b> Make <span style="font-family:Lucida Console; color:DarkOrange">c</span><span style="font-family:Lucida Console; color:DodgerBlue">SiTra</span> multithreaded, and try to include a producer-consumer like model for reading RDBMSs and writing the equivalents to Cassandra.</p>
+          <p align="justify"><b>Implement proposed solution:</b> A few problems and pitfalls have been mentioned in the problems we faced section, and these need some attention.</p>
+          <p align="justify"><b>Add more functionality and UI:</b> Make <span style="font-family:Lucida Console; color:DarkOrange">c</span><span style="font-family:Lucida Console; color:DodgerBlue">SiTra</span> more elegant by adding more UI beauty and also to make <span style="font-family:Lucida Console; color:DarkOrange">c</span><span style="font-family:Lucida Console; color:DodgerBlue">SiTra</span> more interactive and provide menus to set options for Cassandra KeySpace and column families </p>
+          <div class="panel panel-default">
+					<div class="panel-body">
+						<img src="res/images/future1.PNG" class="images" />
+					</div>
+			</div>
+			<div class="panel panel-default">
+					<div class="panel-body">
+						<img src="res/images/future2.PNG" class="images" />
+					</div>
+			</div>         
       	</div>
 	      <div class="col-md-3" id="sidebar">
           <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix">
@@ -88,11 +106,8 @@
                 <a href="results.html">Test results and evaluation</a>
               </li>  
               <li class="active">
-                <a href="problem.html">Problem and solution</a>
-              </li>
-              <li>
-                <a href="futurework.html">Future works</a>
-              </li>  
+              <a href="problem.html">Problems and future work</a>
+              </li> 
             </ul>
           </nav>
         </div>
