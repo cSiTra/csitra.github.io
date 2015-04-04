@@ -71,9 +71,9 @@
 
 
 
-				<h3 id="metamodel">The model</h3>
+				<h2 id="metamodel">The model</h2>
 				<hr>
-				<h4 id="sql-metamodel">RDBMS</h4>
+				<h3 id="rdbms">RDBMS</h3>
 
 				<p align="justify">
 					As to what this is, the <a
@@ -98,7 +98,7 @@
 					</div>
 				</div>
 
-				<h4 id="sql-metamodel">Cassandra</h4>
+				<h3 id="cassandra">Cassandra</h3>
 				<p align="justify">Cassandra is nothing but just another
 					database, however it’s principally very different if we compare it
 					with an RDBMS. Though both Cassandra and RDBMS are nothing but just
@@ -133,7 +133,7 @@
 
 
 
-				<h4 id="sql-metamodel">SQL meta-model</h4>
+				<h3 id="sqlmm">SQL meta-model</h3>
 				<p align="justify">The data and schema we fetch from the RDBMS
 					must be preprocessed and given a form and shape before we start
 					transforming it into Cassandra equivalents, and the SQL meta-model
@@ -321,7 +321,7 @@
 				</p>
 				<br>
 
-				<h4 id="nosql-metamodel">Cassandra meta-model</h4>
+				<h3 id="nosqlmml">Cassandra meta-model</h3>
 				<p>The main objective of the Cassandra meta-model is as same as
 					that of the SQL meta-model. Cassandra meta-model provides a
 					container on which the processed data can sit before it is pushed
@@ -489,12 +489,12 @@
 				</ul>
 				<br>
 
-				<h4 id="transformation">Transformation rules</h4>
-				<p align="center" style="font-family: Sakkal Majalla"><font size="3">
+				<h3 id="trules">Transformation rules</h3>
+				<p align="center" style="font-family: Sakkal Majalla"><font size="4">
 					<i>“One Rule to change them all, One Rule to find them, One
 						Rule to bring them all, and in the context bind them.”</i></font>
 				</p>
-				<hr>
+				
 				<p align="justify">
 					Basically a <strong>transformation rule</strong> is, the principle
 					in logic establishing the conditions under which one statement can
@@ -645,9 +645,9 @@
 				<br>
 
 
-				<h3 id="metamodel">The controller</h3>
+				<h2 id="metamodel">The controller</h2>
 				<hr>
-				<h4 id="sql-metamodel">SQL Service</h4>
+				<h3 id="sservice">SQL Service</h3>
 
 				<p align="justify">The SQL service is a class in <span style="font-family:Lucida Console; color:DarkOrange">c</span><span style="font-family:Lucida Console; color:DodgerBlue">SiTra</span> that
 					fetches data and schema from the RDBMS, it basically establishes a
@@ -663,7 +663,7 @@
 				</div>
 
 
-				<h4 id="sql-metamodel">Main_Sitra</h4>
+				<h3 id="m_s">Main_Sitra</h3>
 
 				<p align="justify">This is the Main class of the <span style="font-family:Lucida Console; color:DarkOrange">c</span><span style="font-family:Lucida Console; color:DodgerBlue">SiTra</span>. It’s
 					the master controller, it inputs connection parameters from the
@@ -678,7 +678,7 @@
 				</div>
 
 
-				<h4 id="sql-metamodel">Cassandra Service</h4>
+				<h3 id="cservice">Cassandra Service</h3>
 
 				<p align="justify">This is a class in <span style="font-family:Lucida Console; color:DarkOrange">c</span><span style="font-family:Lucida Console; color:DodgerBlue">SiTra</span> which establishes a
 					connection with the Cassandra and it creates the KeySpace and
@@ -693,7 +693,7 @@
 
 				<h3 id="metamodel">The view</h3>
 				<hr>
-				<h4 id="sql-metamodel">The UI</h4>
+				<h4 id="ui">The UI</h4>
 
 				<p align="justify">The <span style="font-family:Lucida Console; color:DarkOrange">c</span><span style="font-family:Lucida Console; color:DodgerBlue">SiTra</span> offers only one component as the
 					view. It’s the following user interface (shown as an image), it has
@@ -705,7 +705,7 @@
 					</div>
 				</div>
 
-				<h3 id="metamodel">Flow of Control</h3>
+				<h2 id="foc">Flow of Control</h2>
 				<hr>
 
 
@@ -863,7 +863,22 @@
 				<ul class="nav bs-docs-sidenav">
 					<li><a href="index.html">A Tale</a></li>
 					<li class="active"><a href="design.html">Design and
-							Implementation</a></li>
+							Implementation</a>
+							<ul class="nav">
+                  <li><a href="design.html#design">The design</a></li>
+                  <li><a href="design.html#rdbms">RDBMS</a></li>
+                  <li><a href="design.html#cassandra">Cassandra</a></li>
+                  <li><a href="design.html#sqlmm">SQL meta-model</a></li>
+                  <li><a href="design.html#nosqlmm">Cassandra meta-model</a></li>
+                  <li><a href="design.html#trules">Transformation rules</a></li>
+                  <li><a href="design.html#sservice">SQL Service</a></li>
+                  <li><a href="design.html#m_s">Main_Sitra</a></li>
+                  <li><a href="design.html#cservice">Cassandra Service</a></li>
+                  <li><a href="design.html#ui">The UI</a></li>
+                  <li><a href="design.html#foc">Flow of Control</a></li>
+                  
+                </ul>
+							</li>
 					<li><a href="results.html">Test results and evaluation</a></li>
 					<li><a href="problem.html">Problems and future work</a></li>
 				</ul>
