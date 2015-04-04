@@ -34,7 +34,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">cSiTra</a>
+				<a class="navbar-brand" href="index.html"><span style="font-family:Lucida Console; color:DarkOrange">c</span><span style="font-family:Lucida Console; color:DodgerBlue">SiTra</span></a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -52,14 +52,18 @@
         <div class="col-md-9" id="content">
           <h2 id="design">Test resuts and evaluation</h2>
           <hr>
-          <p>
-            cSiTra has been tested on many RDBMS databases, and one such database is the employee database which is made up of 5 Tables, 10 Constraints, 20 Columns and 1074968 number of records and following is the evaluation of time that it took for this database to be converted.
+          <p align="justify">
+            cSiTra has been tested on many RDBMS databases, and one such database is the employee database which is made up of 5 Tables, 10 Constraints, 20 Columns and 1074968 number of records and following is the evaluation of time that it took for this database to be converted. In the graphs below, generally the x-axis represents the tables, y-axis the time in seconds, the numbers on the graph-buildings are the number of each entity present in the database.
           </p>
-
-          <img src="res/images/res-1.jpg" width="100%" class="images"/>
-          <img src="res/images/res-2.jpg" width="100%" class="images"/>
-          <img src="res/images/res-3.jpg" width="100%" class="images"/>
-          <img src="res/images/res-4.jpg" width="100%" class="images"/>
+		<h3>Reading data and schema</h3>
+		<p align="justify">The following image is a graph of time taken by the <span style="font-family:Lucida Console; color:DarkOrange">c</span><span style="font-family:Lucida Console; color:DodgerBlue">SiTra</span> to read the schema and data from the above mentioned employee database.</p>	
+          <img src="res/images/graphread.jpg" width="100%" class="images"/>
+        <p align="justify">The following image is a graph of time taken by the <span style="font-family:Lucida Console; color:DarkOrange">c</span><span style="font-family:Lucida Console; color:DodgerBlue">SiTra</span> to transform the SQL java objects to Cassandra java objects, that is transforming schema and data of the above mentioned employee database and creating the equivalent Cassandra keyspace .</p>          
+          <img src="res/images/graphtransform.jpg" width="100%" class="images"/>
+        <p align="justify">The following image is a graph of time taken by the <span style="font-family:Lucida Console; color:DarkOrange">c</span><span style="font-family:Lucida Console; color:DodgerBlue">SiTra</span> to push the Cassandra java objects to the Cassandra, that is creating the keyspace and related structure and then inserting the data appropriately.</p>                    
+          <img src="res/images/graphwrite.jpg" width="100%" class="images"/>
+        <p align="justify">The following image is a graph of total time taken by <span style="font-family:Lucida Console; color:DarkOrange">c</span><span style="font-family:Lucida Console; color:DodgerBlue">SiTra</span>. to transform the whole employee database and convert it into employee keyspace in Cassandra. Vital thing to notice is that <span style="font-family:Lucida Console; color:DarkOrange">c</span><span style="font-family:Lucida Console; color:DodgerBlue">SiTra</span> spends most of its time in reading, and converting the data, and spends a negligible time in reading, creating, and converting the schema, this huge chunk of time is one of the problems that has been addressed in the following sections </p>                    
+          <img src="res/images/graphtotaltime.jpg" width="100%" class="images"/>
       	</div>
 	      <div class="col-md-3" id="sidebar">
           <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix">
@@ -72,11 +76,8 @@
                 <a href="results.html">Test results and evaluation</a>
               </li>  
               <li>
-                <a href="problem.html">Problem and solution</a>
-              </li>
-              <li>
-                <a href="futurework.html">Future works</a>
-              </li>  
+                <a href="problem.html">Problems and future work</a>
+              </li> 
             </ul>
           </nav>
         </div>
