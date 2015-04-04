@@ -1,314 +1,881 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
 
-    <title>cSiTra</title>
+<title>cSiTra</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="res/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap core CSS -->
+<link href="res/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="res/css/sticky-footer-navbar.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="res/css/sticky-footer-navbar.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-  </head>
+</head>
 
-  <body>
+<body>
 
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">cSiTra</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="index.html">About</a></li>
-            <li><a href="https://github.com/Xayna/cSiTra">Git</a></li>
-            <li><a href="team.html">Team</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+	<!-- Fixed navbar -->
+	<nav class="navbar navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">cSiTra</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="active"><a href="index.html">About</a></li>
+					<li><a href="https://github.com/Xayna/cSiTra">Git</a></li>
+					<li><a href="team.html">Team</a></li>
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</nav>
 
-    <!-- Begin page content -->
-    <div class="container">
-      <div class="row">
-        <div class="col-md-9" id="content">
-          <h2 id="design">The design</h2>
-          <hr>
-<p align="justify"><strong><span style="font-family:Lucida Console; color:DarkOrange">c</span><span style="font-family:Lucida Console; color:DodgerBlue">SiTra</span></strong> is written in Java and uses the MVC design pattern in its approach. The cSiTra system is made up of 9 different components interacting with each other. The following five components: the RDBMS, Cassandra, their corresponding meta-models (SQL meta-model and the Cassadra meta-model) and the transformation rules for SiTra make up the model. The SQL service, Cassandra service and the Main_SiTra make up the controllers, and it offers one component as the view that is the UI. In the next section each of these components are elaborated on what they are and what exactly they do.</p>
-          <img src="res/images/mvc.jpg" class="images"/>
-          
+	<!-- Begin page content -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-9" id="content">
+				<h2 id="design">The design</h2>
+				<hr>
+				<p align="justify">
+					<strong><span
+						style="font-family: Lucida Console; color: DarkOrange">c</span><span
+						style="font-family: Lucida Console; color: DodgerBlue">SiTra</span></strong>
+					is written in Java and uses the MVC design pattern in its approach.
+					The cSiTra system is made up of 9 different components interacting
+					with each other. The following five components: the RDBMS,
+					Cassandra, their corresponding meta-models (SQL meta-model and the
+					Cassadra meta-model) and the transformation rules for SiTra make up
+					the model. The SQL service, Cassandra service and the Main_SiTra
+					make up the controllers, and it offers one component as the view
+					that is the UI. In the next section each of these components are
+					elaborated on what they are and what exactly they do.
+				</p>
+				<img src="res/images/mvc.jpg" class="images" />
 
 
-          <h3 id="metamodel">The model</h3>
-          <hr>
-          <h4 id="sql-metamodel">RDBMS</h4>
 
-<p align="justify">
-As to what this is, the <a href="http://en.wikipedia.org/wiki/Relational_database_management_system">relational database management system</a> is the food(or source) for cSiTra, (as to what exactly they do) the RDBMS supplies the data and the related schema that are supposed to be processed and made as Cassandra equivalents and pushed into Cassandra.
-The data in an RDBMS are usually nothing but alphanumeric values that exists as cells, and carry no meaning all by themselves, however these cells are arranged in rows and columns which give them some meaning and in turn these rows and columns form a table. Another way to say this is that the data is stored as rows of cells in the tables made meaningful of columns. And these tables relate to one another using the concept of constrains, where a constraint is a particular column in a table that can be used by other tables to relate each other. The following image shows a typical relational database:
-</p>
- <img src="res/images/mvc.jpg" class="images"/>
+				<h3 id="metamodel">The model</h3>
+				<hr>
+				<h4 id="sql-metamodel">RDBMS</h4>
+
+				<p align="justify">
+					As to what this is, the <a
+						href="http://en.wikipedia.org/wiki/Relational_database_management_system">relational
+						database management system</a> is the food(or source) for cSiTra, (as
+					to what exactly they do) the RDBMS supplies the data and the
+					related schema that are supposed to be processed and made as
+					Cassandra equivalents and pushed into Cassandra. The data in an
+					RDBMS are usually nothing but alphanumeric values that exists as
+					cells, and carry no meaning all by themselves, however these cells
+					are arranged in rows and columns which give them some meaning and
+					in turn these rows and columns form a table. Another way to say
+					this is that the data is stored as rows of cells in the tables made
+					meaningful of columns. And these tables relate to one another using
+					the concept of constrains, where a constraint is a particular
+					column in a table that can be used by other tables to relate each
+					other. The following image shows a typical relational database:
+				</p>
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<img src="res/images/eschema.png" class="images" />
+					</div>
+				</div>
+
+				<h4 id="sql-metamodel">Cassandra</h4>
+				<p align="justify">Cassandra is nothing but just another
+					database, however it’s principally very different if we compare it
+					with an RDBMS. Though both Cassandra and RDBMS are nothing but just
+					databases and basically just store “data” in them the approach they
+					take to achieve this is very different. To give a quick real world
+					analogy consider that a person wishes to travel from London to
+					Paris for a holiday, this person can choose between taking a train
+					or to fly in an airplane, though the end result is still nothing
+					but reaching Paris from London for a holiday, the means by which he
+					can achieve are principally very different from one another (and
+					yes of course both train and an airplane have their own pros and
+					cons). Cassandra is built with a different point of view in regard
+					to the data it stores. Cassandra just does not store data in a
+					relational manner and has its own unique way. The data in Cassandra
+					exists as a pair of key and value, where value is the actual
+					alphanumeric like data (it may also be something which is not
+					exactly alphanumeric) and a key is the key to identify these
+					values. These key value pairs are stored in a KeySpace which is the
+					main entity of Cassandra. As the name says a KeySpace is a space
+					for storing key-value pairs, and yes it would be highly illogical
+					to just suspend the data randomly in a space and these key-value
+					pairs would need a meaningful structure to sit on. To solve this
+					problem a KepSpace offers structures called as Column families to
+					hold the key-value pairs and it has some properties of its own that
+					help to identify them. The following is an image that shows a
+					typical KeySpace in Cassandra.</p>
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<img src="res/images/keyspace.png" class="images" />
+					</div>
+				</div>
 
 
-<h4 id="sql-metamodel">Cassandra</h4>
-<p align="justify">
-          <p>The data and schema we fetch from the RDBMS must be preprocessed and given a form and shape before we start transforming it into Cassandra equivalents, and the SQL meta-model provides a container for this need. The SQL meta-model is nothing but a subset of the RDBMS data model and it represents how the RDBMS data and related schema will exists in context of programming environment (which is Java in our case). An instance of a SQL meta-model will be used as a container to store the data and schema we fetch from the RDBMS and these object are then ready for further processing. The following is the image of cSiTra’s SQL meta-model and what follows it is a brief description about each of its subcomponents.</p>
-          <div class="panel panel-default">
-            <div class="panel-body">
-              <img src="res/images/sql.PNG">
-            </div>
-            <div class="panel-footer">SQL meta model</div>
-          </div>
 
-          <p>What follows is the description of each element of the model and the model as a whole. A colour scheme is used in this part where <span class="blue">blue</span> represents the parent element and <span class="orange">orange</span> represents the child elements and a <span class="red">red</span> represents the properties of the parent.</p>
+				<h4 id="sql-metamodel">SQL meta-model</h4>
+				<p align="justify">The data and schema we fetch from the RDBMS
+					must be preprocessed and given a form and shape before we start
+					transforming it into Cassandra equivalents, and the SQL meta-model
+					provides a container for this need. The SQL meta-model is nothing
+					but a subset of the RDBMS data model and it represents how the
+					RDBMS data and related schema will exists in context of programming
+					environment (which is Java in our case). An instance of a SQL
+					meta-model will be used as a container to store the data and schema
+					we fetch from the RDBMS and these object are then ready for further
+					processing. The following is the image of cSiTra’s SQL meta-model
+					and what follows it is a brief description about each of its
+					subcomponents.</p>
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<img src="res/images/sqlmm.jpg" class="images" />
+					</div>
+				</div>
+				<p align="justify">
+					What follows is the description of each element of the model and
+					the model as a whole. A colour scheme is used in this part where <span
+						class="blue">blue</span> represents the parent element and <span
+						class="orange">orange</span> represents the child elements and a <span
+						class="red">red</span> represents the properties of the parent.
+				</p>
 
-          <p>The Key element of this model is a <span class="blue">Database</span>.
-          <ul>
-            <li>Each <span class="blue">Database</span> has zero or more <span class="orange">Sequences</span> and <span class="orange">Tables</span>, and each <span class="orange">Sequence</span> and <span class="orange">Table</span> belong to exactly one <span class="blue">Database</span>. If <span class="blue">Database</span> is removed, so are all of its <span class="orange">Sequences</span> and <span class="orange">Tables</span>.</li>
-            <li>Each <span class="orange">Database</span> has a property that represents its <span class="red">name (Datatype: String)</span>.</li>
-          </ul> 
-          <br>
+				<p align="justify">
+					The Key element of this model is a <span class="blue">Database</span>.
 
-          <p><span class="blue">Sequences</span>: are a feature of some database products which just creates unique values. It just increments a value and returns it.</p>
-          <ul>
-            <li>Each <span class+"blue">Sequences</span> has a property that represents its <span class="red">name (Datatype: String)</span>.</li>
-            <li>A property <span class="red">minValue (Datatype: int)</span>.</li>
-            <li>A property <span class="red">maxValue (Datatype: long)</span>.</li>
-            <li>A property <span class="red">incrementBy (Datatype: int)</span>.</li>
-            <li>A property <span class="red">startWith (Datatype: long)</span>.</li>
-            <li>A property <span class="red">curentValue (Datatype: long)</span>.</li>
-            <li>A property <span class="red">cycle (Datatype: boolean)</span>.</li>
-          </ul>
-          <br>
 
-          <p><span class="blue">Table</span>: is data structure which has some properties and stores values in form of rows and columns</p>
-          <ul>
-            <li>Each <span class="blue">Table</span> belongs to exactly to one Database and has zero or more <span class="orange">Constraints</span> and <span class="orange">Rows</span>, and each of these <span class="orange">Constraint</span> and <span class="orange">Row</span> belong to exactly that one <span class="blue">Table</span>. If <span class="blue">Table</span> is removed, so are all of its <span class="orange">Constraints</span> and <span class="orange">Rows</span>.</li>
-            <li>Additionally each <span class="blue">Table</span> has one or more <span class="orange">Columns</span>, and each of these <span class="orange">Column</span> belong to exactly that one <span class="blue">Table</span>. If <span class="blue">Table</span> is removed, so are all of its <span class="orange">Columns</span>.</li>
-            <li>Each <span class="blue">Table</span> has a property that represents its <span class="red">name (Datatype: String)</span>.</li>     
-          </ul>
-          <br>
 
-          <p><span class="blue">Row</span>: represents a single, implicitly structured data item in a Table.</p>
-          <ul>
-            <li>Each <span class="blue">Row</span> belongs to exactly to one Table and has zero or more <span class="orange">Cells</span>, and each of these <span class="orange">Cells</span> belong to exactly that one <span class="blue">Row</span>. If <span class="blue">Row</span> is removed, so are all of its <span class="orange">Cells</span>.</li>        
-          </ul>
-          <br>
+				
+				<ul align="justify">
+					<li>Each <span class="blue">Database</span> has zero or more <span
+						class="orange">Sequences</span> and <span class="orange">Tables</span>,
+						and each <span class="orange">Sequence</span> and <span
+						class="orange">Table</span> belong to exactly one <span
+						class="blue">Database</span>. If <span class="blue">Database</span>
+						is removed, so are all of its <span class="orange">Sequences</span>
+						and <span class="orange">Tables</span>.
+					</li>
+					<li>Each <span class="orange">Database</span> has a property
+						that represents its <span class="red">name (Datatype:
+							String)</span>.
+					</li>
+				</ul>
+				<br>
 
-          <p><span class="blue">Constraints</span>: are used to specify rules for the data in a Table.</p>
-          <ul>
-            <li>Each <span class="blue">Constraint</span> belongs to exactly to one Table and has zero or more <span class="orange">Columns</span> associated to it, and each of these <span class="orange">Columns</span> may or may not refer the <span class="blue">Constraint</span> </li>
-            <li>Each <span class="blue">Constraint</span> has a property that represents its <span class="red">name (Datatype: String)</span>.</li>
-            <li>A property that represents its <span class="red">type (Datatype: enum-ConstraintType)</span>.</li>
-            <li>And a property that refers the columns to which it is associated with presents called  <span class="red">reference (Datatype: String)</span>.</li>
-          </ul>
-          <br>
+				<p align="justify">
+					<span class="blue">Sequences</span>: are a feature of some database
+					products which just creates unique values. It just increments a
+					value and returns it.
+				</p>
+				<ul align="justify">
+					<li>Each <spanclass+"blue">Sequences</span> has a
+						property that represents its <span class="red">name
+							(Datatype: String)</span>.</li>
+					<li>A property <span class="red">minValue (Datatype:
+							int)</span>.
+					</li>
+					<li>A property <span class="red">maxValue (Datatype:
+							long)</span>.
+					</li>
+					<li>A property <span class="red">incrementBy (Datatype:
+							int)</span>.
+					</li>
+					<li>A property <span class="red">startWith (Datatype:
+							long)</span>.
+					</li>
+					<li>A property <span class="red">curentValue (Datatype:
+							long)</span>.
+					</li>
+					<li>A property <span class="red">cycle (Datatype:
+							boolean)</span>.
+					</li>
+				</ul>
+				<br>
 
-          <p><span class="blue">Columns</span>: are a set of data values of a particular simple type, one for each Row of the Table. They provide the structure according to which the Rows are composed.</p>
-          <ul>
-            <li>Each <span class="blue">Column</span> belongs to exactly to one Table and has at least one <span class="orange">Cell</span> If <span class="blue">Column</span> is removed, so are all of its <span class="orange">Cells</span>.</li>
-            <li>Additionally each <span class="blue">Column</span> has zero or more <span class="orange">Constraints</span>, and each of these <span class="orange">Constraint</span> belong to exactly that one <span class="blue">Column</span>. If <span class="blue">Column</span> is removed, so are all of its <span class="orange">Constraints</span>.</li>
-            <li>Each <span class="blue">Column</span> has a property that represents its <span class="red">name (Datatype: String)</span>.</li>
-            <li>A property that represents its <span class="red">type (Datatype: enum-DataType)</span>.</li>
-            <li>A property that represents its <span class="red">size (Datatype: String)</span>.</li>
-            <li>And a property that represents if it is a null called <span class="red">nullable (Datatype: boolean)</span>.</li>
-          </ul>
-          <br>
+				<p align="justify">
+					<span class="blue">Table</span>: is data structure which has some
+					properties and stores values in form of rows and columns
+				</p>
+				<ul align="justify">
+					<li>Each <span class="blue">Table</span> belongs to exactly to
+						one Database and has zero or more <span class="orange">Constraints</span>
+						and <span class="orange">Rows</span>, and each of these <span
+						class="orange">Constraint</span> and <span class="orange">Row</span>
+						belong to exactly that one <span class="blue">Table</span>. If <span
+						class="blue">Table</span> is removed, so are all of its <span
+						class="orange">Constraints</span> and <span class="orange">Rows</span>.
+					</li>
+					<li>Additionally each <span class="blue">Table</span> has one
+						or more <span class="orange">Columns</span>, and each of these <span
+						class="orange">Column</span> belong to exactly that one <span
+						class="blue">Table</span>. If <span class="blue">Table</span> is
+						removed, so are all of its <span class="orange">Columns</span>.
+					</li>
+					<li>Each <span class="blue">Table</span> has a property that
+						represents its <span class="red">name (Datatype: String)</span>.
+					</li>
+				</ul>
+				<br>
 
-          <p><span class="blue">Cells</span>: a database table is composed of rows and columns of Cells, they hold the actual data.</p>
-          <ul>
-            <li>Each <span class="blue">Cell</span> belongs to exactly to one Row and one Column of a Table.</li>
-            <li>Each <span class="blue">Cell</span> has a property to store data called, <span class="red">value (Datatype: String)</span>.</li>
-          </ul>
-          <br>
+				<p align="justify">
+					<span class="blue">Row</span>: represents a single, implicitly
+					structured data item in a Table.
+				</p>
+				<ul align="justify">
+					<li>Each <span class="blue">Row</span> belongs to exactly to
+						one Table and has zero or more <span class="orange">Cells</span>,
+						and each of these <span class="orange">Cells</span> belong to
+						exactly that one <span class="blue">Row</span>. If <span
+						class="blue">Row</span> is removed, so are all of its <span
+						class="orange">Cells</span>.
+					</li>
+				</ul>
+				<br>
 
-          <h4 id="nosql-metamodel">Cassandra meta-model</h4>
-          <p>The main objective of the Cassandra meta-model is as same as that of the SQL meta-model. Cassandra meta-model provides a container on which the processed data can sit before it is pushed to Cassandra. The Cassandra meta-model is nothing but a subset of the Cassandra data model and it represents how this data will exists in context of programming environment (which is Java in our case). An instance of a Cassandra meta-model will be used as a container to store the processed data and these objects are then pushed into Cassandra. The following is the image of cSiTra’s Cassandra meta-model and what follows it is a brief description about each of its subcomponents.</p>
-          <div class="panel panel-default">
-            <div class="panel-body">
-              <img src="res/images/nosql.PNG">
-            </div>
-            <div class="panel-footer">Cassandra meta model</div>
-          </div>
-          <p>What follows is the description of each element of the model and the model as a whole. A colour scheme is used in this part where <span class="blue">blue</span> represents the parent element and <span class="orange">orange</span> represents the child elements and a <span class="red">red</span> represents the properties of the parent.</p>
+				<p align="justify">
+					<span class="blue">Constraints</span>: are used to specify rules
+					for the data in a Table.
+				</p>
+				<ul align="justify">
+					<li>Each <span class="blue">Constraint</span> belongs exactly
+						to one Table and has one or more <span class="orange">Columns</span>
+						associated to it.
+					</li>
+					<li>Each <span class="blue">Constraint</span> has a property
+						that represents its <span class="red">name (Datatype:
+							String)</span>.
+					</li>
+					<li>A property that represents its <span class="red">type
+							(Datatype: enum-ConstraintType)</span>.
+					</li>
+					<li>And a property that refers the columns to which it is
+						associated with presents called <span class="red">reference
+							(Datatype: String)</span>.
+					</li>
+				</ul>
+				<br>
 
-          <p>The Key element of this model is a <span class="blue">KeySpace</span> (which is the container for your application data).</p> 
-          <ul>
-            <li>Each <span class="blue">KeySpace</span> has zero or more <span class="orange">Indexes</span> and <span class="orange">Options</span>, and each <span class="orange">Index</span> and <span class="orange">Option</span> belong to exactly one <span class="blue">KeySpace</span>. If <span class="blue">KeySpace</span> is removed, so are all of its <span class="orange">Indexes</span> and <span class="orange">Options</span>.</li>
-            <li>Additionally and more importantly each <span class="blue">KeySpace</span> has one or more, and each <span class="orange">ColumnFamily</span> belong to exactly one <span class="blue">KeySpace</span>. If <span class="blue">KeySpace</span> is removed, so are all of its ColumnFamilies.</li>
-            <li>Each <span class="blue">KeySpace</span> has a property that represents its <span class="red">name (Datatype: String)</span>.</li>
-          </ul>
-          <br>
+				<p align="justify">
+					<span class="blue">Columns</span>: are a set of data values of a
+					particular simple type, one for each Row of the Table. They provide
+					the structure according to which the Rows are composed.
+				</p>
+				<ul align="justify">
+					<li>Each <span class="blue">Column</span> belongs to exactly
+						to one Table and has zero or more <span class="orange">Cells</span>
+						and <spanclass"orange">Constraints</span> If <span
+							class="blue">Column</span> is removed, so are all of its <span
+							class="orange">Cells</span> and <spanclass"orange">Constraints</span>.
+					</li>
+					<li>Each <span class="blue">Column</span> has a property that
+						represents its <span class="red">name (Datatype: String)</span>.
+					</li>
+					<li>A property that represents its <span class="red">type
+							(Datatype: enum-DataType)</span>.
+					</li>
+					<li>A property that represents its <span class="red">size
+							(Datatype: String)</span>.
+					</li>
+					<li>And a property that represents if it is a null called <span
+						class="red">nullable (Datatype: boolean)</span>.
+					</li>
+				</ul>
+				<br>
 
-          <p><span class="blue">ColumnFamily</span>: is a NoSQL object that contains columns of related data. It is a tuple (pair) that consists of a key-value pair, where the key is mapped to a value that is a set of columns. In analogy with relational databases, a standard column family is as a "table"</p>
-          <ul>
-            <li>Each <span class="blue">ColumnFamily</span> belongs to exactly to one KeySpace and has zero or more <span class="orange">PrimaryKeys</span> and <span class="orange">Rows</span>, and each of these PrimaryKey and <span class="orange">Row</span> belong to exactly that one <span class="blue">ColumnFamily</span>. If <span class="blue">ColumnFamily</span> is removed, so are all of its <span class="orange">PrimaryKeys</span> and <span class="orange">Rows</span>.</li>
-            <li>Additionally each <span class="blue">ColumnFamily</span> has one or more <span class="orange">Columns</span>, and each of these <span class="orange">Column</span> belong to exactly that one <span class="blue">ColumnFamily</span>. If <span class="blue">ColumnFamily</span> is removed, so are all of its <span class="orange">Columns</span>.</li>
-            <li>Each <span class="blue">ColumnFamily</span> has a property that represents its <span class="red">name (Datatype: String)</span>.</li>
-            <li>And a property that to add a comment to it called, <span class="red">comment (Datatype: String)</span>.</li>
-          </ul>
-          <br>
+				<p align="justify">
+					<span class="blue">Cells</span>: a database table is composed of
+					rows and columns of Cells, they hold the actual data.
+				</p>
+				<ul align="justify">
+					<li>Each <span class="blue">Cell</span> belongs to exactly to
+						one Row and one Column of a Table.
+					</li>
+					<li>Each <span class="blue">Cell</span> has a property to
+						store data called, <span class="red">value (Datatype:
+							String)</span>.
+					</li>
+				</ul>
 
-          <p><span class="blue">Row</span>: represents a single, implicitly structured data item in a ColumnFamily.</p>
-          <ul>
-            <li>Each <span class="blue">Row</span> belongs to exactly to one ColumnFamily and has zero or more <span class="orange">Cells</span>, and each of these <span class="orange">Cells</span> belong to exactly that one <span class="blue">Row</span>. If <span class="blue">Row</span> is removed, so are all of its <span class="orange">Cells</span>.</li>
-          </ul>
-          <br>
+				<p align="justify">
+					<strong>The datatypes and constraint-types has been
+						represented as enumerations </strong>
+				</p>
+				<br>
 
-          <p><span class="blue">PrimaryKeys</span>: are used to specify primary keys of a ColumnFamily.</p>
-          <ul>
-            <li>Each <span class="blue">PrimaryKey</span> belongs to exactly to one ColumnFamily and has zero or more <span class="orange">Columns</span> associated to it. </li>
-          </ul>
-          <br>
+				<h4 id="nosql-metamodel">Cassandra meta-model</h4>
+				<p>The main objective of the Cassandra meta-model is as same as
+					that of the SQL meta-model. Cassandra meta-model provides a
+					container on which the processed data can sit before it is pushed
+					to Cassandra. The Cassandra meta-model is nothing but a subset of
+					the Cassandra data model and it represents how this data will
+					exists in context of programming environment (which is Java in our
+					case). An instance of a Cassandra meta-model will be used as a
+					container to store the processed data and these objects are then
+					pushed into Cassandra. The following is the image of cSiTra’s
+					Cassandra meta-model and what follows it is a brief description
+					about each of its subcomponents.</p>
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<img src="res/images/nosqlmm.PNG">
+					</div>
+				</div>
+				<p align="justify">
+					What follows is the description of each element of the model and
+					the model as a whole. A colour scheme is used in this part where <span
+						class="blue">blue</span> represents the parent element and <span
+						class="orange">orange</span> represents the child elements and a <span
+						class="red">red</span> represents the properties of the parent.
+				</p>
 
-          <p><span class="blue">Columns</span>: in Cassandra a column is a pair of name and data values of a particular simple type, one for each Row of the ColumnFamily.</p>
-          <ul>
-            <li>Each <span class="blue">Column</span> belongs to exactly to one <span class="blue">Column</span>Family and has at least one <span class="orange">Cell</span>. If <span class="blue">Column</span> is removed, so are all of its <span class="orange">Cells</span>.</li>
-            <li>Additionally each <span class="blue">Column</span> may or may not be a PrimaryKey.</li>
-            <li>Each <span class="blue">Column</span> has a property that represents its <span class="red">name (Datatype: String)</span>.</li>
-            <li>A property that represents its <span class="red">datatype (Datatype: enum-Type)</span>.</li>
-            <li>A property that represents its <span class="red">size (Datatype: String)</span>.</li>
-          </ul>
-          <br>
+				<p align="justify">
+					The Key element of this model is a <span class="blue">KeySpace</span>
+					(which is the container for your application data).
+				</p>
+				<ul align="justify">
+					<li>Each <span class="blue">KeySpace</span> has zero or more <span
+						class="orange">Indexes</span> and <span class="orange">Options</span>,
+						and each <span class="orange">Index</span> and <span
+						class="orange">Option</span> belong to exactly one <span
+						class="blue">KeySpace</span>. If <span class="blue">KeySpace</span>
+						is removed, so are all of its <span class="orange">Indexes</span>
+						and <span class="orange">Options</span>.
+					</li>
+					<li>Additionally and more importantly each <span class="blue">KeySpace</span>
+						has one or more <span class="orange">ColumnFamilies</span>, and
+						each <span class="orange">ColumnFamily</span> belong to exactly
+						one <span class="blue">KeySpace</span>. If <span class="blue">KeySpace</span>
+						is removed, so are all of its ColumnFamilies.
+					</li>
+					<li>Each <span class="blue">KeySpace</span> has a property
+						that represents its <span class="red">name (Datatype:
+							String)</span>.
+					</li>
+				</ul>
+				<br>
 
-          <p><span class="blue">Cells</span>: is an entity they hold the actual data.</p>
-          <ul>
-            <li>Each <span class="blue">Cell</span> belongs to exactly to one Row and one Column of a ColumnFamily.</li>
-            <li>Each <span class="blue">Cell</span> has a property to store data called, <span class="red">value (Datatype: String)</span>.</li>
-          </ul>
-          <br>
+				<p align="justify">
+					<span class="blue">ColumnFamily</span>: is a NoSQL object that
+					contains columns of related data. It is a tuple (pair) that
+					consists of a key-value pair, where the key is mapped to a value
+					that is a set of columns. In analogy with relational databases, a
+					standard column family is as a "table"
+				</p>
+				<ul align="justify">
+					<li>Each <span class="blue">ColumnFamily</span> belongs to
+						exactly to one <b>KeySpace</b> and has zero or more <span
+						class="orange">PrimaryKeys</span> and <span class="orange">Rows</span>,
+						and each of these PrimaryKey and <span class="orange">Row</span>
+						belong to exactly to that one <span class="blue">ColumnFamily</span>.
+						If <span class="blue">ColumnFamily</span> is removed, so are all
+						of its <span class="orange">PrimaryKeys</span> and <span
+						class="orange">Rows</span>.
+					</li>
+					<li>Additionally each <span class="blue">ColumnFamily</span>
+						has one or more <span class="orange">Columns</span>, and each of
+						these <span class="orange">Column</span> belong to exactly that
+						one <span class="blue">ColumnFamily</span>. If <span class="blue">ColumnFamily</span>
+						is removed, so are all of its <span class="orange">Columns</span>.
+					</li>
+					<li>Each <span class="blue">ColumnFamily</span> has a property
+						that represents its <span class="red">name (Datatype:
+							String)</span>.
+					</li>
+					<li>And a property that to add a comment to it called, <span
+						class="red">comment (Datatype: String)</span>.
+					</li>
+				</ul>
+				<br>
 
-          <p><span class="blue">Index</span>: A key index, speeds up random access to data in the ColumnFamily. In Cassandra, the primary index for a column family is the index of its row keys.</p>
-          <ul>
-            <li>Each <span class="blue">Index</span> belongs to exactly to one KeySpace.</li>
-            <li>Each <span class="blue">Index</span> has a property to represent its <span class="red">name (Datatype: String)</span>.</li>
-            <li>And a property that refers the columns to which it is associated with presents called <span class="red">reference (Datatype: String)</span>.</li>
-          </ul>
-          <br>
-          <h2 id="transformation">Transformation rules</h2>
-          <hr>
-          <p>Basically a <strong>transformation rule</strong> is, the principle in logic establishing the conditions under which one statement can be derived or validly deduced from one or more other statements especially in a formalized language.<p>
+				<p align="justify">
+					<span class="blue">Row</span>: represents a single, implicitly
+					structured data item in a ColumnFamily.
+				</p>
+				<ul align="justify">
+					<li>Each <span class="blue">Row</span> belongs to exactly to
+						one ColumnFamily and has zero or more <span class="orange">Cells</span>,
+						and each of these <span class="orange">Cells</span> belong to
+						exactly that one <span class="blue">Row</span>. If <span
+						class="blue">Row</span> is removed, so are all of its <span
+						class="orange">Cells</span>.
+					</li>
+				</ul>
+				<br>
 
-          <p><strong>SiTra</strong> is a simple Java library for supporting a programming approach to writing transformations aiming to, firstly use Java for writing transformations, and secondly, to provide a minimal framework for the execution of transformations. SiTra consists of two interfaces and a class that implements a transformation algorithm. The aim is to facilitate a style of programming that incorporates the concept of transformation rules.</p>
+				<p align="justify">
+					<span class="blue">PrimaryKeys</span>: are used to specify primary
+					keys of a ColumnFamily.
+				</p>
+				<ul align="justify">
+					<li>Each <span class="blue">PrimaryKey</span> belongs to
+						exactly to one ColumnFamily and has one or more <span
+						class="orange">Columns</span> associated to it.
+					</li>
+				</ul>
+				<br>
 
-          <p><strong>Transformer</strong> – the primary transformation object; it contains a collection of rules, and manages the process of transforming source model objects into target model objects.</p>
+				<p align="justify">
+					<span class="blue">Columns</span>: in Cassandra a column is a pair
+					of name and data values of a particular simple type, one for each
+					Row of the ColumnFamily.
+				</p>
+				<ul align="justify">
+					<li>Each <span class="blue">Column</span> belongs to exactly
+						to one <span class="blue">Column</span>Family and has zero or more
+						<span class="orange">Cells</span>. If <span class="blue">Column</span>
+						is removed, so are all of its <span class="orange">Cells</span>.
+					</li>
+					<li>Each <span class="blue">Column</span> has a property that
+						represents its <span class="red">name (Datatype: String)</span>.
+					</li>
+					<li>A property that represents its <span class="red">datatype
+							(Datatype: enum-Type)</span>.
+					</li>
+					<li>A property that represents its <span class="red">size
+							(Datatype: String)</span>.
+					</li>
+				</ul>
+				<br>
 
-          <p><strong>Rule</strong> – a rule deals with specific detail of how to map an object from a source model into an object of the target model. One or more rules may or may be applicable for the same type of object and it is necessary to have a means to determine the applicability of a rule for a specific object, not just its type.</p>
+				<p align="justify">
+					<span class="blue">Cells</span>: is an entity they hold the actual
+					data.
+				</p>
+				<ul align="justify">
+					<li>Each <span class="blue">Cell</span> belongs to exactly to
+						one Row and one Column of a ColumnFamily.
+					</li>
+					<li>Each <span class="blue">Cell</span> has a property to
+						store data called, <span class="red">value (Datatype:
+							String)</span>.
+					</li>
+				</ul>
+				<br>
 
-          <p>These are the rules to be followed to convert SQL to Cassandra:</p><br>
+				<p align="justify">
+					<span class="blue">Index</span>: A key index, speeds up random
+					access to data in the ColumnFamily. In Cassandra, the primary index
+					for a column family is the index of its row keys.
+				</p>
+				<ul>
+					<li>Each <span class="blue">Index</span> belongs to exactly to
+						one KeySpace.
+					</li>
+					<li>Each <span class="blue">Index</span> has a property to
+						represent its <span class="red">name (Datatype: String)</span>.
+					</li>
+					<li>And a property that refers the columns to which it is
+						associated with presents called <span class="red">reference
+							(Datatype: String)</span>.
+					</li>
+				</ul>
+				<br>
 
-          <h4 id="Database2Keyspace"><code>Database2Keyspace</code> (Database to Keyspace)</h4>
-          <ul>
-            <li>This rule applies to the SQL database’s schema and to the Cassandra’s Keyspace.</li>
-            <li>This rule takes the Database object and copies its schema name, and creates a new keyspace object with the same name as the SQL Database Schema.</li>
-          </ul>
-          <br>
+				<h4 id="transformation">Transformation rules</h4>
+				<p align="center" style="font-family: Sakkal Majalla">
+					<i>“One Rule to change them all, One Rule to find them, One
+						Rule to bring them all, and in the context bind them.”</i>
+				</p>
+				<hr>
+				<p align="justify">
+					Basically a <strong>transformation rule</strong> is, the principle
+					in logic establishing the conditions under which one statement can
+					be derived or validly deduced from one or more other statements
+					especially in a formalized language.
+				<p>
+				<p align="justify">
+					<strong>SiTra</strong> is a simple Java library for supporting a
+					programming approach to writing transformations aiming to, firstly
+					use Java for writing transformations, and secondly, to provide a
+					minimal framework for the execution of transformations. SiTra
+					consists of two interfaces and a class that implements a
+					transformation algorithm. The aim is to facilitate a style of
+					programming that incorporates the concept of transformation rules.
+				</p>
 
-          <h4 id="Table2ColumnFamily"><code>Table2ColumnFamily</code> (Tables to ColumnFamily)</h4>
-          <ul>
-            <li>This rule applies to the SQL table and to the Cassandra’s column family.</li>
-            <li>This rule, for each table in the SQL, takes the table object and creates a column family, in the keyspace, with the same name as the table.</li>
-            <li>It adds any options to the table if specified.</li>
-          </ul>
-          <br>
+				<p align="justify">
+					<strong>Transformer</strong> – the primary transformation object;
+					it contains a collection of rules, and manages the process of
+					transforming source model objects into target model objects.
+				</p>
 
-          <h4 id="SqlCol2NoSqlCol"><code>SqlCol2NoSqlCol</code> (SQL Column to NoSQL Column)</h4>
-          <ul>
-            <li>This rule applies to the SQL columns and to the Cassandra columns.</li>
-            <li>This rule applies to each column present in the SQL table object, and it takes a column object and creates a Cassandra column object with the same name.</li>
-            <li>The following table represents the list of SQL Data types and the corresponding NoSQL Data types to which they are mapped.</li>
-            <img src="res/images/datatype-mapping.png"/>
-            <li>If the size parameter is present for the SQL column object same value is applied for the Cassandra column.</li>
-            <li>If the table has a constraint of type PRIMARY or COMPOSITE_PRIMARY then create a PrimaryKey for the column family with the reference of the column(s) object.</li>
-            <li>A special case to be considered is, If the table has a constraint of type FOREIGN, then:</li>
-              <ul>
-                <li>Create a column family for each foreign key instance (called the reference column family).</li>
-                <li>Each column family has the primary key as referred table's primary key and the consequent columns are the referee table's primary key.</li>
-              </ul>
-          </ul>
-          <br>
+				<p align="justify">
+					<strong>Rule</strong> – a rule deals with specific detail of how to
+					map an object from a source model into an object of the target
+					model. One or more rules may or may be applicable for the same type
+					of object and it is necessary to have a means to determine the
+					applicability of a rule for a specific object, not just its type.
+				</p>
 
-          <h4 id="SQLCons2NoSQLCons"><code>SQLCons2NoSQLCons</code> (SQL Constraint to NoSQL Constraint)</h4>
-          <ul>
-            <li>This rule applies to the SQL’s Constraints and to the Cassandra’s Constraints.</li>
-            <li>This rule applies to each constraint object present in the SQL table, and it takes the Constraint object and checks if the constraint is primary key constraint if yes, it creates a Cassandra primary key object.</li>
-          </ul>
-          <br>
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<img src="res/images/trules.PNG">
+					</div>
+				</div>
 
-          <h4 id="SQLCell2NoSQLCell"><code>SQLCell2NoSQLCell</code> (SQL Cell to NoSQL Cell)</h4>
-          <ul>
-            <li>This rule applies to the SQL’s Cells and to the Cassandra’s Cells.</li>
-            <li>This rule applies to each cell object present in the SQL table, and it takes the cell object and copies the value of the cell, and it creates a Cassandra cell object with the same value.</li>
-          </ul>
-          <br>
+				<p align="justify">Following are the rules that are incorporated
+					in order to transform SQL to Cassandra (NoSQL)</p>
+				<br>
 
-          <h4 id="SQLDatatype2NoSQLDatatype"><code>SQLDatatype2NoSQLDatatype</code> (SQL data type to NoSQL data type)</h4>
-          <ul>
-            <li>This rule applies to the SQL’s data types and to that of the Cassandra.</li>
-            <li>This rule applies to each data type present in the SQL columns, and its values is matched to an equivalent in Cassandra.</li>
-          </ul>
-          <br>
+				<h4 id="Database2Keyspace">
+					<code>Database2Keyspace</code>
+					(Database to Keyspace)
+				</h4>
+				<ul>
+					<li>This rule applies to the SQL database’s schema and to the
+						Cassandra’s Keyspace.</li>
+					<li>This rule takes the Database object and copies its schema
+						name, and creates a new keyspace object with the same name as the
+						SQL Database Schema.</li>
+				</ul>
+				<br>
 
-          <h4 id="SQLRows2NoSQLRows"><code>SQLRows2NoSQLRows</code> (SQL rows to NoSQL rows)</h4>
-          <ul>
-            <li>This rule applies to the SQL’s rows and to that of the Cassandra.</li>
-            <li>This rule mainly comes into picture in while reading the data from the database row by row, and each of these rows then converted as corresponding Cassandra rows.</li>
-          </ul>
-          <br>
+				<h4 id="Table2ColumnFamily">
+					<code>Table2ColumnFamily</code>
+					(Tables to ColumnFamily)
+				</h4>
+				<ul>
+					<li>This rule applies to the SQL table and to the Cassandra’s
+						column family.</li>
+					<li>This rule, for each table in the SQL, takes the table
+						object and creates a column family, in the keyspace, with the same
+						name as the table.</li>
+					<li>It adds any options to the table if specified.</li>
+				</ul>
+				<br>
 
-          <h3 id="implementation">Implementation</h3><hr>
-          <img src="res/images/implementation.jpg" width="100%"/><br>
+				<h4 id="SqlColumns2NoSqlColumns">
+					<code>SQLColumns2NoSQLColumns</code>
 
-          <p><strong>The SQL service</strong>: The SQL service is a class in cSiTra that fetches data and schema from the RDBMS, it basically establishes a connection with the RDBMS and instantiates an object of the SQL meta-model, fetches the data from RDBMS and stores them as SQL java objects are produced this way. These objects are then passed to SiTra for transformation. The following pseudo code gives a general idea about the SQL Service class.</p>
+				</h4>
+				<ul>
+					<li>This rule applies to the SQL columns and to the Cassandra
+						columns.</li>
+					<li>This rule applies to each column present in the SQL table
+						object, and it takes a column object and creates a Cassandra
+						column object with the same name.</li>
+					<li>The following table represents the list of SQL data types
+						and the corresponding NoSQL data types to which they are mapped.</li>
+					<img src="res/images/dtmapping.png" />
 
-          <p><strong>The Main_Sitra</strong>: This is the Main class of the cSiTra. It’s the master controller, it inputs connection parameters from the user interface, utilizes the SQL and Cassandra service to fetch and push the data from the respective databases and uses SiTra and the corresponding transformation rules to transform the source object to target object. The following snippet gives an overall idea.</p>
+					<li>If the table has a constraint of type PRIMARY or
+						COMPOSITE_PRIMARY then create a PrimaryKey for the column family
+						with the reference of the column(s) object.</li>
+					<li>A special case to be considered is, If the table has a
+						constraint of type FOREIGN, then:</li>
+					<ul>
+						<li>Create a column family for each foreign key instance (its
+							naming convention is:
+							&ltCurrentTableName&gt_&ltReferenceTableName&gt).</li>
+						<li>Each column family has the primary key as referred
+							table's primary key and the consequent columns are the referee
+							table's primary key.</li>
+					</ul>
+				</ul>
+				<br>
 
-          <p><strong>The Cassandra service</strong>: This is a class in cSiTra which establishes a connection with the Cassandra and it creates the KeySpace and pushes the data into it. The following pseudo code gives a general idea about this class.</p>
+				<h4 id="SQLCons2NoSQLCons">
+					<code>SQLConstraints2NoSQLConstraints</code>
 
-          <p><strong>The UI</strong>: The cSiTra offers only one component as the view. It’s the following user interface (shown as an image), it has fields for the user to enter the connection parameters for both RDMS and Cassandra databases.</p>
+				</h4>
+				<ul>
+					<li>This rule applies to the SQL’s Constraints and to the
+						Cassandra’s Constraints.</li>
+					<li>This rule applies to each constraint object present in the
+						SQL table, and it takes the Constraint object and checks if the
+						constraint is primary key constraint if yes, it creates a
+						Cassandra primary key object.</li>
+				</ul>
+				<br>
 
-      	</div>
-	      <div class="col-md-3" id="sidebar">
-          <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix">
-            <ul class="nav bs-docs-sidenav">
-              <li><a href="index.html">A Tale</a></li>
-              <li class="active">
-                <a href="design.html">Design and Implementation</a>
-              </li>
-              <li>
-                <a href="results.html">Test results and evaluation</a>
-              </li>  
-              <li>
-                <a href="problem.html">Problem and solution</a>
-              </li>
-              <li>
-                <a href="futurework.html">Future works</a>
-              </li>  
-            </ul>
-          </nav>
-        </div>
-      </div>
-    </div>
+				<h4 id="SQLCell2NoSQLCell">
+					<code>SQLCell2NoSQLCell</code>
 
-    <!--
+				</h4>
+				<ul>
+					<li>This rule applies to the SQL’s Cells and to the
+						Cassandra’s Cells.</li>
+					<li>This rule applies to each cell object present in the SQL
+						table, and it takes the cell object and copies the value of the
+						cell, and it creates a Cassandra cell object with the same value.</li>
+				</ul>
+				<br>
+
+				<h4 id="SQLDatatype2NoSQLDatatype">
+					<code>SQLDatatype2NoSQLDatatype</code>
+					(SQL data type to NoSQL data type)
+				</h4>
+				<ul>
+					<li>This rule applies to the SQL’s data types and to that of
+						the Cassandra.</li>
+					<li>This rule applies to each data type present in the SQL
+						columns, and its values is matched to an equivalent in Cassandra.</li>
+				</ul>
+				<br>
+
+				<h4 id="SQLRows2NoSQLRows">
+					<code>SQLRows2NoSQLRows</code>
+					(SQL rows to NoSQL rows)
+				</h4>
+				<ul>
+					<li>This rule applies to the SQL’s rows and to that of the
+						Cassandra.</li>
+					<li>This rule mainly comes into picture in while reading the
+						data from the database row by row, and each of these rows then
+						converted as corresponding Cassandra rows.</li>
+				</ul>
+				<br>
+
+
+				<h3 id="metamodel">The controller</h3>
+				<hr>
+				<h4 id="sql-metamodel">SQL Service</h4>
+
+				<p align="justify">The SQL service is a class in cSiTra that
+					fetches data and schema from the RDBMS, it basically establishes a
+					connection with the RDBMS and instantiates an object of the SQL
+					meta-model, fetches the data from RDBMS and stores them as SQL java
+					objects are produced this way. These objects are then passed to
+					SiTra for transformation. The following pseudo code gives a general
+					idea about the SQL Service class</p>
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<img src="res/images/sservice.jpg" class="images" />
+					</div>
+				</div>
+
+
+				<h4 id="sql-metamodel">Main_Sitra</h4>
+
+				<p align="justify">This is the Main class of the cSiTra. It’s
+					the master controller, it inputs connection parameters from the
+					user interface, utilizes the SQL and Cassandra service to fetch and
+					push the data from the respective databases and uses SiTra and the
+					corresponding transformation rules to transform the source object
+					to target object. The following snippet gives an overall idea.</p>
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<img src="res/images/Main_SiTra.jpg" class="images" />
+					</div>
+				</div>
+
+
+				<h4 id="sql-metamodel">Cassandra Service</h4>
+
+				<p align="justify">This is a class in cSiTra which establishes a
+					connection with the Cassandra and it creates the KeySpace and
+					pushes the data into it. The following pseudo code gives a general
+					idea about this class.</p>
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<img src="res/images/cservice.jpg" class="images" />
+					</div>
+				</div>
+
+
+				<h3 id="metamodel">The view</h3>
+				<hr>
+				<h4 id="sql-metamodel">The UI</h4>
+
+				<p align="justify">The cSiTra offers only one component as the
+					view. It’s the following user interface (shown as an image), it has
+					fields for the user to enter the connection parameters for both
+					RDMS and Cassandra databases.
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<img src="res/images/ui.jpg" class="images" />
+					</div>
+				</div>
+
+				<h3 id="metamodel">Flow of Control</h3>
+				<hr>
+
+
+				<p align="justify">A Quick look at the flow of control in
+					cSiTra.</p>
+				<div class="panel-body">
+					<img src="res/images/implementation.jpg" class="images" />
+				</div>
+			</div>
+
+			<p align="justify">When we run cSiTra the Main_SiTra is called
+				which is the actual entry point and, the first event that takes
+				place is displaying the UI for the user to enter the RDBMS and
+				Cassandra database connection details and credentials:
+			<ul>
+				<li>SQL jdbc driver</li>
+				<li>Database name</li>
+				<li>Schema name</li>
+				<li>User name</li>
+				<li>Password</li>
+				<li>Cassandra sever IP</li>
+				<li>Port number.</li>
+			</ul>
+
+			<p align="justify">And then when the user hits “ok” button the
+				transformation will occur in the following sequence:</p>
+			<ol>
+				<li>
+					<p align="justify">Main_SiTra calls the SQL service into
+						action, by calling one of its methods that fetches data and schema
+						from the RDBMS and produces SQL-meta-model objects.</p>
+					<p align="justify" color=blue>
+						<b>Getting the RDBMS data & Schema and putting them as
+							metamodel objects</b>
+					</p>
+					<p align="justify">
+						After connecting to RDBMS Server by using the details provided by
+						the user, CSiTra will immediately start generating the SQL meta
+						model objects by calling generate() in SQLService class.<br>
+						In generate function first the “Database” object is created and
+						the name property is set to be “databaseName_schemaName”. Then
+						getTables() will be called which in turn will call getColumns()
+						and getRows() functions.
+					<ol>
+						<li>getTables : Get the tables meta data from table_schema ,
+							for each table create sqlTable object and fill the name, type ,
+							size properties with fetched meta model data then add the table
+							to the database.</li>
+						<li>getColumns : Get the columns for a certain table from
+							information_schema.columns. Generate a sqlColumn object for each
+							column and add it the corresponding table.</li>
+						<li>getRows: Get the data for a certain table and fill it
+							with cells objects. Where each row can contain may cells and each
+							cell is connected with one columns. And the row objects will be
+							added to the corresponding table.</li>
+					</ol> After getting the objects it will be passed to SiTra to start
+					transformation.
+					</p>
+
+
+				</li>
+
+				<li>
+					<p align="justify">Next the Main_SiTra uses the SiTra & the
+						available transformation rules and starts converting the source
+						model (SQL-meta-model objects from step 1) to target model
+						(Cassandra-meta-model objects).</p>
+					<p align="justify" color=blue>
+						<b>SiTra transformation</b>
+					</p>
+					<p align="justify">The SiTra transformation is in a nested
+						format. The logic of the aforementioned rules is implemented in
+						classes extending the rule class.
+					<ol>
+						<li>Database2Keyspace: In here, the database object is
+							converted into a keyspace object. The name is transferred as well
+							as any options or comments specified. Then each of the tables in
+							the database is transformed into a column family by calling the
+							next rule. It returns the transformed keyspace.</li>
+						<li>Table2ColumnFamily: In here, the corresponding column
+							family object is created in the above keyspace. The default
+							replication factor is set to 1. The name, options and comments
+							are transferred. After that each of the columns in the table is
+							transformed by calling the next rule. The next step is to check
+							each column for constraints.
+							<ul>
+								<li>If the column has a Primary Key constraint, the
+									corresponding column in the column family is added in the
+									references of the PK of the column family.</li>
+								<li>If the column has a Foreign Key constraint, a new
+									reference table is created with the name <referredTable>_<refereeTable>.
+									The Primary key is set to the Primary key of the referred
+									table’s primary key columns. This table is then added to the
+									main keyspace.
+								</li>
+							</ul> After considering constraints, the rows of each table are
+							transformed. The cells in each of the rows are considered one by
+							one. They are mapped into their respective Cassandra cell and
+							have the reference of the column in the column family they belong
+							to. In case of the foreign key, the reference table is
+							considered. If the row with the referred primary key already
+							exists, the referee cell’s primary key is added on to the
+							additional columns list. If not, a new row is added with the
+							primary key and the latter step is executed. It returns the
+							transformed column family.
+						</li>
+						<li>SqlColumn2NoSqlColumn: In here, the SQL columns are
+							mapped to Cassandra columns. The name is transferred as well as
+							the Datatype, according to the next Datatype mapping rule. It
+							returns the transformed column.</li>
+						<li>DatatypeMapping: This defines which DQL datatype closely
+							matches with the datatype from Cassandra, and returns the
+							transformed datatype.</li>
+					</ol> After getting the objects it will be passed to SiTra to start
+					transformation.
+					</p>
+				</li>
+
+				<li>
+					<p align="justify">Now the control is transferred to Cassandra
+						Service which parses the Cassandra equivalent java objects
+						produced in the step 2 and pushes it to the Cassandra database.</p>
+					<p align="justify" color=blue>
+						<b>Parse Cassandra meta-model objects and data</b>
+					</p>
+					<p align="justify">
+						The result of the transformation is Cassandra meta-model objects
+						which can be parsed to create Cassandra KeySpaces and
+						column-families and fill it with data. <br> To start parsing,
+						we will call generate() method in Cassandra Service and pass the
+						objects to it. This method will call createSchema() which will
+						generate Cassandra KeySpace and its column-families then call
+						fillData() to fill the tables.
+					<ol>
+						<li>createSchema : create keyspace in Cassandra with options
+							{'class':'SimpleStrategy', 'replication_factor':1};";, it will
+							also create the tables for the keyspace, if the table is a
+							foreign key table , it will has a foreign key column and another
+							column to hold related data with list datatype.</li>
+						<li>fillData () : for each table in keypsace , this method
+							will fill it with the related data stored in the nosql rows
+							objects related to the table.</li>
+					</ol>
+					</p>
+				</li>
+			</ol>
+			<br>cSiTra prints each and everything it does to the console
+			throughout the process, information such as timers for reading the
+			data from RDBMS, conversion, and writing the data to Cassandra, and
+			details of each entity read, converted, and written are also
+			displayed, so are any warnings, exceptions, or errors if they occur.
+			</p>
+		</div>
+		<div class="col-md-3" id="sidebar">
+			<nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix">
+				<ul class="nav bs-docs-sidenav">
+					<li><a href="index.html">A Tale</a></li>
+					<li class="active"><a href="design.html">Design and
+							Implementation</a></li>
+					<li><a href="results.html">Test results and evaluation</a></li>
+					<li><a href="problem.html">Problem and solution</a></li>
+					<li><a href="futurework.html">Future works</a></li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+	</div>
+
+	<!--
     <footer class="footer">
       <div class="container">
         <p class="text-muted">Place sticky footer content here.</p>
@@ -316,10 +883,11 @@ The data in an RDBMS are usually nothing but alphanumeric values that exists as 
     </footer>
     -->
 
-    <!-- Bootstrap core JavaScript
+	<!-- Bootstrap core JavaScript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="res/js/bootstrap.min.js"></script>
-  </body>
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="res/js/bootstrap.min.js"></script>
+</body>
 </html>
