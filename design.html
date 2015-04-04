@@ -7,7 +7,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>cSiTra</title>
+<title><span style="font-family:Lucida Console; color:DarkOrange">c</span><span style="font-family:Lucida Console; color:DodgerBlue">SiTra</span></title>
 
 <!-- Bootstrap core CSS -->
 <link href="res/css/bootstrap.min.css" rel="stylesheet">
@@ -35,7 +35,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">cSiTra</a>
+				<a class="navbar-brand" href="#"><span style="font-family:Lucida Console; color:DarkOrange">c</span><span style="font-family:Lucida Console; color:DodgerBlue">SiTra</span></a>
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
@@ -59,7 +59,7 @@
 						style="font-family: Lucida Console; color: DarkOrange">c</span><span
 						style="font-family: Lucida Console; color: DodgerBlue">SiTra</span></strong>
 					is written in Java and uses the MVC design pattern in its approach.
-					The cSiTra system is made up of 9 different components interacting
+					The <span style="font-family:Lucida Console; color:DarkOrange">c</span><span style="font-family:Lucida Console; color:DodgerBlue">SiTra</span> system is made up of 9 different components interacting
 					with each other. The following five components: the RDBMS,
 					Cassandra, their corresponding meta-models (SQL meta-model and the
 					Cassadra meta-model) and the transformation rules for SiTra make up
@@ -79,7 +79,7 @@
 				<p align="justify">
 					As to what this is, the <a
 						href="http://en.wikipedia.org/wiki/Relational_database_management_system">relational
-						database management system</a> is the food(or source) for cSiTra, (as
+						database management system</a> is the food(or source) for <span style="font-family:Lucida Console; color:DarkOrange">c</span><span style="font-family:Lucida Console; color:DodgerBlue">SiTra</span>, (as
 					to what exactly they do) the RDBMS supplies the data and the
 					related schema that are supposed to be processed and made as
 					Cassandra equivalents and pushed into Cassandra. The data in an
@@ -144,7 +144,7 @@
 					environment (which is Java in our case). An instance of a SQL
 					meta-model will be used as a container to store the data and schema
 					we fetch from the RDBMS and these object are then ready for further
-					processing. The following is the image of cSiTra’s SQL meta-model
+					processing. The following is the image of <span style="font-family:Lucida Console; color:DarkOrange">c</span><span style="font-family:Lucida Console; color:DodgerBlue">SiTra</span>’s SQL meta-model
 					and what follows it is a brief description about each of its
 					subcomponents.</p>
 				<div class="panel panel-default">
@@ -331,7 +331,7 @@
 					exists in context of programming environment (which is Java in our
 					case). An instance of a Cassandra meta-model will be used as a
 					container to store the processed data and these objects are then
-					pushed into Cassandra. The following is the image of cSiTra’s
+					pushed into Cassandra. The following is the image of <span style="font-family:Lucida Console; color:DarkOrange">c</span><span style="font-family:Lucida Console; color:DodgerBlue">SiTra</span>’s
 					Cassandra meta-model and what follows it is a brief description
 					about each of its subcomponents.</p>
 				<div class="panel panel-default">
@@ -650,7 +650,7 @@
 				<hr>
 				<h4 id="sql-metamodel">SQL Service</h4>
 
-				<p align="justify">The SQL service is a class in cSiTra that
+				<p align="justify">The SQL service is a class in <span style="font-family:Lucida Console; color:DarkOrange">c</span><span style="font-family:Lucida Console; color:DodgerBlue">SiTra</span> that
 					fetches data and schema from the RDBMS, it basically establishes a
 					connection with the RDBMS and instantiates an object of the SQL
 					meta-model, fetches the data from RDBMS and stores them as SQL java
@@ -666,7 +666,7 @@
 
 				<h4 id="sql-metamodel">Main_Sitra</h4>
 
-				<p align="justify">This is the Main class of the cSiTra. It’s
+				<p align="justify">This is the Main class of the <span style="font-family:Lucida Console; color:DarkOrange">c</span><span style="font-family:Lucida Console; color:DodgerBlue">SiTra</span>. It’s
 					the master controller, it inputs connection parameters from the
 					user interface, utilizes the SQL and Cassandra service to fetch and
 					push the data from the respective databases and uses SiTra and the
@@ -681,7 +681,7 @@
 
 				<h4 id="sql-metamodel">Cassandra Service</h4>
 
-				<p align="justify">This is a class in cSiTra which establishes a
+				<p align="justify">This is a class in <span style="font-family:Lucida Console; color:DarkOrange">c</span><span style="font-family:Lucida Console; color:DodgerBlue">SiTra</span> which establishes a
 					connection with the Cassandra and it creates the KeySpace and
 					pushes the data into it. The following pseudo code gives a general
 					idea about this class.</p>
@@ -696,7 +696,7 @@
 				<hr>
 				<h4 id="sql-metamodel">The UI</h4>
 
-				<p align="justify">The cSiTra offers only one component as the
+				<p align="justify">The <span style="font-family:Lucida Console; color:DarkOrange">c</span><span style="font-family:Lucida Console; color:DodgerBlue">SiTra</span> offers only one component as the
 					view. It’s the following user interface (shown as an image), it has
 					fields for the user to enter the connection parameters for both
 					RDMS and Cassandra databases.
@@ -711,12 +711,12 @@
 
 
 				<p align="justify">A Quick look at the flow of control in
-					cSiTra.</p>
+					<span style="font-family:Lucida Console; color:DarkOrange">c</span><span style="font-family:Lucida Console; color:DodgerBlue">SiTra</span>.</p>
 				<div class="panel-body">
 					<img src="res/images/implementation.jpg" class="images" />
 				</div>
 
-			<p align="justify">When we run cSiTra the Main_SiTra is called
+			<p align="justify">When we run <span style="font-family:Lucida Console; color:DarkOrange">c</span><span style="font-family:Lucida Console; color:DodgerBlue">SiTra</span> the Main_SiTra is called
 				which is the actual entry point and, the first event that takes
 				place is displaying the UI for the user to enter the RDBMS and
 				Cassandra database connection details and credentials:
@@ -743,7 +743,7 @@
 					</p>
 					<p align="justify">
 						After connecting to RDBMS Server by using the details provided by
-						the user, CSiTra will immediately start generating the SQL meta
+						the user, <span style="font-family:Lucida Console; color:DarkOrange">c</span><span style="font-family:Lucida Console; color:DodgerBlue">SiTra</span> will immediately start generating the SQL meta
 						model objects by calling generate() in SQLService class.<br>
 						In generate function first the “Database” object is created and
 						the name property is set to be “databaseName_schemaName”. Then
@@ -852,7 +852,7 @@
 					</p>
 				</li>
 			</ol>
-			<br>cSiTra prints each and everything it does to the console
+			<br><span style="font-family:Lucida Console; color:DarkOrange">c</span><span style="font-family:Lucida Console; color:DodgerBlue">SiTra</span> prints each and everything it does to the console
 			throughout the process, information such as timers for reading the
 			data from RDBMS, conversion, and writing the data to Cassandra, and
 			details of each entity read, converted, and written are also
