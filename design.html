@@ -50,21 +50,26 @@
     <div class="container">
       <div class="row">
         <div class="col-md-9" id="content">
-          <h2 id="design">Design</h2>
+          <h2 id="design">The design</h2>
           <hr>
-<p><strong>cSiTra</strong> is written in Java and uses the MVC design pattern in its approach. The cSiTra system is made up of 9 different components interacting with each other. The following five components: the RDBMS, Cassandra, their corresponding meta-models (SQL meta-model and the Cassadra meta-model) and the transformation rules for SiTra make up the model. The SQL service, Cassandra service and the Main_SiTra make up the controllers, and it offers one component as the view that is the UI. In the next section each of these components are elaborated on what they are and what exactly they do.</p>
+<p align="justify"><strong><span style="font-family:Lucida Console; color:DarkOrange">c</span><span style="font-family:Lucida Console; color:DodgerBlue">SiTra</span></strong> is written in Java and uses the MVC design pattern in its approach. The cSiTra system is made up of 9 different components interacting with each other. The following five components: the RDBMS, Cassandra, their corresponding meta-models (SQL meta-model and the Cassadra meta-model) and the transformation rules for SiTra make up the model. The SQL service, Cassandra service and the Main_SiTra make up the controllers, and it offers one component as the view that is the UI. In the next section each of these components are elaborated on what they are and what exactly they do.</p>
           <img src="res/images/mvc.jpg" class="images"/>
           
 
 
-          <h3 id="metamodel">Models</h3>
+          <h3 id="metamodel">The model</h3>
           <hr>
-          <h4 id="sql-metamodel">The RDBMS</h4>
+          <h4 id="sql-metamodel">RDBMS</h4>
 
 <p align="justify">
-As to what this is, the relational database management system is the food(or source) for cSiTra, (as to what exactly they do) the RDBMS supplies the data and the related schema that are supposed to be processed and made as Cassandra equivalents and pushed into Cassandra.
+As to what this is, the <a href="http://en.wikipedia.org/wiki/Relational_database_management_system">relational database management system</a> is the food(or source) for cSiTra, (as to what exactly they do) the RDBMS supplies the data and the related schema that are supposed to be processed and made as Cassandra equivalents and pushed into Cassandra.
 The data in an RDBMS are usually nothing but alphanumeric values that exists as cells, and carry no meaning all by themselves, however these cells are arranged in rows and columns which give them some meaning and in turn these rows and columns form a table. Another way to say this is that the data is stored as rows of cells in the tables made meaningful of columns. And these tables relate to one another using the concept of constrains, where a constraint is a particular column in a table that can be used by other tables to relate each other. The following image shows a typical relational database:
 </p>
+ <img src="res/images/mvc.jpg" class="images"/>
+
+
+<h4 id="sql-metamodel">Cassandra</h4>
+<p align="justify">
           <p>The data and schema we fetch from the RDBMS must be preprocessed and given a form and shape before we start transforming it into Cassandra equivalents, and the SQL meta-model provides a container for this need. The SQL meta-model is nothing but a subset of the RDBMS data model and it represents how the RDBMS data and related schema will exists in context of programming environment (which is Java in our case). An instance of a SQL meta-model will be used as a container to store the data and schema we fetch from the RDBMS and these object are then ready for further processing. The following is the image of cSiTra’s SQL meta-model and what follows it is a brief description about each of its subcomponents.</p>
           <div class="panel panel-default">
             <div class="panel-body">
