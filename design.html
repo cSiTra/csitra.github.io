@@ -396,13 +396,13 @@
 				</p>
 				<ul align="justify">
 					<li>Each <span class="blue">ColumnFamily</span> belongs to
-						exactly to one <b>KeySpace</b> and has zero or more <span
-						class="orange">PrimaryKeys</span> and <span class="orange">Rows</span>,
-						and each of these PrimaryKey and <span class="orange">Row</span>
+						exactly to one <b>KeySpace</b> and has zero or more <span class="orange">Rows</span>, and exactly one <span class="orange">
+						PrimaryKey</span>(composed of one or more columns).
+						and each of these <span class="orange">Row</span>
 						belong to exactly to that one <span class="blue">ColumnFamily</span>.
 						If <span class="blue">ColumnFamily</span> is removed, so are all
-						of its <span class="orange">PrimaryKeys</span> and <span
-						class="orange">Rows</span>.
+						of its <span class="orange">Rows</span> and <span
+						class="orange">PrimaryKey</span>.
 					</li>
 					<li>Additionally each <span class="blue">ColumnFamily</span>
 						has one or more <span class="orange">Columns</span>, and each of
@@ -432,6 +432,8 @@
 						class="blue">Row</span> is removed, so are all of its <span
 						class="orange">Cells</span>.
 					</li>
+					<li>Each <span class="blue">Row</span> may have additional <span class="orange">Columns</span>.
+					</li>
 				</ul>
 				<br>
 
@@ -454,9 +456,7 @@
 				</p>
 				<ul align="justify">
 					<li>Each <span class="blue">Column</span> belongs to exactly
-						to one <span class="blue">Column</span>Family and has zero or more
-						<span class="orange">Cells</span>. If <span class="blue">Column</span>
-						is removed, so are all of its <span class="orange">Cells</span>.
+						to one <span class="blue">Cell</span> in a <span class="blue">Row</span> of a<span class="blue">Column Family</span>.
 					</li>
 					<li>Each <span class="blue">Column</span> has a property that
 						represents its <span class="red">name (Datatype: String)</span>.
@@ -476,7 +476,7 @@
 				</p>
 				<ul align="justify">
 					<li>Each <span class="blue">Cell</span> belongs to exactly to
-						one Row and one Column of a ColumnFamily.
+						one <span class="blue">Row</span> of a <span class="blue">Column Family</span>. They contain <span class="orange">Column</span>.
 					</li>
 					<li>Each <span class="blue">Cell</span> has a property to
 						store data called, <span class="red">value (Datatype:
@@ -588,23 +588,14 @@
 					<li>This rule applies to each column present in the SQL table
 						object, and it takes a column object and creates a Cassandra
 						column object with the same name.</li>
-					<li>The following table represents the list of SQL data types
-						and the corresponding NoSQL data types to which they are mapped.</li>
+					<li>The following table represents a sample list of SQL data types
+						and the corresponding NoSQL data types to which they are mapped(<span style="font-family:Lucida Console; color:DarkOrange">c</span><span style="font-family:Lucida Console; color:DodgerBlue">SiTra</span> does not map all of them).</li>
 					<img src="res/images/dtmapping.png" class="images" />
 
 					<li>If the table has a constraint of type PRIMARY or
 						COMPOSITE_PRIMARY then create a PrimaryKey for the column family
 						with the reference of the column(s) object.</li>
-					<li>A special case to be considered is, If the table has a
-						constraint of type FOREIGN, then:</li>
-					<ul>
-						<li>Create a column family for each foreign key instance (its
-							naming convention is:
-							&ltCurrentTableName&gt_&ltReferenceTableName&gt).</li>
-						<li>Each column family has the primary key as referred
-							table's primary key and the consequent columns are the referee
-							table's primary key.</li>
-					</ul>
+					
 				</ul>
 				<br>
 
@@ -619,6 +610,15 @@
 						SQL table, and it takes the Constraint object and checks if the
 						constraint is primary key constraint if yes, it creates a
 						Cassandra primary key object.</li>
+					<li>A special case to be considered is, If the table has a
+						constraint of type FOREIGN, then:</li>
+					<ul>
+						<li>Create a column family for each foreign key instance (its
+							naming convention is: &ltCurrentTableName&gt_&ltReferenceTableName&gt).</li>
+						<li>Each column family has the primary key as referred
+							table's primary key and the consequent columns are the referee
+							table's primary key.</li>
+					</ul>
 				</ul>
 				<br>
 
@@ -836,7 +836,7 @@
 										corresponding column in the column family is added in the
 										references of the PK of the column family.</li>
 									<li>If the column has a Foreign Key constraint, a new
-										reference table is created with the name <referredTable>_<refereeTable>.
+										reference table is created with the name &ltCurrentTableName&gt_&ltReferenceTableName&gt.
 										The Primary key is set to the Primary key of the referred
 										table’s primary key columns. This table is then added to the
 										main keyspace. 
