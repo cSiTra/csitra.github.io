@@ -1,92 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
 
-    <title>cSiTra</title>
+<title>cSiTra</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="res/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap core CSS -->
+<link href="res/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="res/css/sticky-footer-navbar.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="res/css/sticky-footer-navbar.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-  </head>
+</head>
 
-  <body>
+<body>
 
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-				<a class="navbar-brand" href="index.html"><span style="font-family:Lucida Console; color:DarkOrange">c</span><span style="font-family:Lucida Console; color:DodgerBlue">SiTra</span></a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="https://github.com/cSiTra/cSiTra-Project">Git</a></li>
-            <li><a href="team.html">Team</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+	<!-- Fixed navbar -->
+	<nav class="navbar navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html"><span
+					style="font-family: Lucida Console; color: DarkOrange">c</span><span
+					style="font-family: Lucida Console; color: DodgerBlue">SiTra</span></a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="https://github.com/cSiTra/cSiTra-Project">Git</a></li>
+					<li><a href="team.html">Team</a></li>
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</nav>
 
-    <!-- Begin page content -->
-    <div class="container">
-      <div class="row">
-        <div class="col-md-9" id="content">
-          <h2 id="design">Test resuts and evaluation</h2>
-          <hr>
-          <p align="justify">
-            <span style="font-family:Lucida Console; color:DarkOrange">c</span><span style="font-family:Lucida Console; color:DodgerBlue">SiTra</span> has been tested on many RDBMS databases, and one such database is the employee database which is made up of 5 Tables, 10 Constraints, 20 Columns and 1074968 number of records and following is the evaluation of time that it took for this database to be converted. In the graphs below, generally the x-axis represents the tables, y-axis the time in seconds, the numbers on the graph-buildings are the number of each entity present in the database.
-          </p>
-		<h3>Reading data and schema</h3>
-		<p align="justify">The following image is a graph of time taken by the <span style="font-family:Lucida Console; color:DarkOrange">c</span><span style="font-family:Lucida Console; color:DodgerBlue">SiTra</span> to read the schema and data from the above mentioned employee database.</p>	
-          <img src="res/images/graphread.jpg" width="100%" class="images"/>
-        <h3>Transforming data and schema to Cassandra equivalents</h3>
-        <p align="justify">The following image is a graph of time taken by the <span style="font-family:Lucida Console; color:DarkOrange">c</span><span style="font-family:Lucida Console; color:DodgerBlue">SiTra</span> to transform the SQL java objects to Cassandra java objects, that is transforming schema and data of the above mentioned employee database and creating the equivalent Cassandra keyspace .</p>          
-          <img src="res/images/graphtransform.jpg" width="100%" class="images"/>
-		<h3>Pushing the keyspace and data to Cassandra</h3>
-        <p align="justify">The following image is a graph of time taken by the <span style="font-family:Lucida Console; color:DarkOrange">c</span><span style="font-family:Lucida Console; color:DodgerBlue">SiTra</span> to push the Cassandra java objects to the Cassandra, that is creating the keyspace and related structure and then inserting the data appropriately.</p>                    
-          <img src="res/images/graphwrite.jpg" width="100%" class="images"/>
-		<h3>The total time taken</h3>
-        <p align="justify">The following image is a graph of total time taken by <span style="font-family:Lucida Console; color:DarkOrange">c</span><span style="font-family:Lucida Console; color:DodgerBlue">SiTra</span>. to transform the whole employee database and convert it into employee keyspace in Cassandra. Vital thing to notice is that <span style="font-family:Lucida Console; color:DarkOrange">c</span><span style="font-family:Lucida Console; color:DodgerBlue">SiTra</span> spends most of its time in reading, and converting the data, and spends a negligible time in reading, creating, and converting the schema, this huge chunk of time is one of the problems that has been addressed in the following sections </p>                    
-          <img src="res/images/graphtotaltime.jpg" width="100%" class="images"/>
-      	</div>
-	      <div class="col-md-3" id="sidebar">
-          <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix">
-            <ul class="nav bs-docs-sidenav">
-              <li><a href="index.html">A Tale</a></li>
-              <li>
-                <a href="design.html">Design and Implementation</a>
-              </li>
-              <li class="active">
-                <a href="results.html">Test results and evaluation</a>
-              </li>  
-              <li>
-                <a href="problem.html">Problems and future work</a>
-              </li> 
-            </ul>
-          </nav>
-        </div>
-      </div>
-    </div>
+	<!-- Begin page content -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-9" id="content">
+				<h2 id="design">Test resuts and evaluation</h2>
+				<hr>
+				<p align="justify">
+					<span style="font-family: Lucida Console; color: DarkOrange">c</span><span
+						style="font-family: Lucida Console; color: DodgerBlue">SiTra</span>
+					has been tested on many RDBMS databases, and one such database is
+					the employee database which is made up of 5 Tables, 10 Constraints,
+					20 Columns and 1074968 number of records and following is the
+					evaluation of time that it took for this database to be converted.
+					In the graphs below, generally the x-axis represents the tables,
+					y-axis the time in seconds, the numbers on the graph-buildings are
+					the number of each entity present in the database.
+				</p>
+				<h3>Reading data and schema</h3>
+				<p align="justify">
+					The following image is a graph of time taken (in seconds) by the <span
+						style="font-family: Lucida Console; color: DarkOrange">c</span><span
+						style="font-family: Lucida Console; color: DodgerBlue">SiTra</span>
+					to read the schema and data from the above mentioned employee
+					database.
+				</p>
+				<img src="res/images/graphread.jpg" width="100%" class="images" />
+				<h3>Transforming data and schema to Cassandra equivalents</h3>
+				<p align="justify">
+					The following image is a graph of time taken by the <span
+						style="font-family: Lucida Console; color: DarkOrange">c</span><span
+						style="font-family: Lucida Console; color: DodgerBlue">SiTra</span>
+					to transform the SQL java objects to Cassandra java objects, that
+					is transforming schema and data of the above mentioned employee
+					database and creating the equivalent Cassandra keyspace.
+				</p>
+				<img src="res/images/graphtransform.jpg" width="100%" class="images" />
+				<h3>Pushing the keyspace and data to Cassandra</h3>
+				<p align="justify">
+					The following image is a graph of time taken by the <span
+						style="font-family: Lucida Console; color: DarkOrange">c</span><span
+						style="font-family: Lucida Console; color: DodgerBlue">SiTra</span>
+					to push the Cassandra java objects to the Cassandra, that is
+					creating the keyspace and related structure and then inserting the
+					data appropriately.
+				</p>
+				<img src="res/images/graphwrite.jpg" width="100%" class="images" />
+				<h3>The total time taken</h3>
+				<p align="justify">
+					The following image is a graph of total time taken by <span
+						style="font-family: Lucida Console; color: DarkOrange">c</span><span
+						style="font-family: Lucida Console; color: DodgerBlue">SiTra</span>.
+					to transform the whole employee database and convert it into
+					employee keyspace in Cassandra. Vital thing to notice is that <span
+						style="font-family: Lucida Console; color: DarkOrange">c</span><span
+						style="font-family: Lucida Console; color: DodgerBlue">SiTra</span>
+					spends most of its time in reading, and converting the data, and
+					spends a negligible time in reading, creating, and converting the
+					schema, this huge chunk of time is one of the problems that has
+					been addressed in the following sections
+				</p>
+				<img src="res/images/graphtotaltime.jpg" width="100%" class="images" />
+			</div>
+			<div class="col-md-3" id="sidebar">
+				<nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix">
+					<ul class="nav bs-docs-sidenav">
+						<li><a href="index.html">A Tale</a></li>
+						<li><a href="design.html">Design and Implementation</a></li>
+						<li class="active"><a href="results.html">Test results
+								and evaluation</a></li>
+						<li><a href="problem.html">Problems and future work</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
 
-    <!--
+	<!--
     <footer class="footer">
       <div class="container">
         <p class="text-muted">Place sticky footer content here.</p>
@@ -94,10 +133,11 @@
     </footer>
     -->
 
-    <!-- Bootstrap core JavaScript
+	<!-- Bootstrap core JavaScript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="res/js/bootstrap.min.js"></script>
-  </body>
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="res/js/bootstrap.min.js"></script>
+</body>
 </html>

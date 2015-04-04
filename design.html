@@ -397,8 +397,8 @@
 				<ul align="justify">
 					<li>Each <span class="blue">ColumnFamily</span> belongs to
 						exactly to one <b>KeySpace</b> and has zero or more <span class="orange">Rows</span>, and exactly one <span class="orange">
-						PrimaryKey</span>(composed of one or more columns).
-						and each of these <span class="orange">Row</span>
+						PrimaryKey</span> (composed of one or more columns).
+						And each of these <span class="orange">Row</span>
 						belong to exactly to that one <span class="blue">ColumnFamily</span>.
 						If <span class="blue">ColumnFamily</span> is removed, so are all
 						of its <span class="orange">Rows</span> and <span
@@ -455,8 +455,8 @@
 					Row of the ColumnFamily.
 				</p>
 				<ul align="justify">
-					<li>Each <span class="blue">Column</span> belongs to exactly
-						to one <b>Cell</b> in a <b>Row</b> of a <b>Column Family</b>.
+					<li>Each <span class="blue">Column</span> belongs to
+						to a <b>Cell</b> in a <b>Row</b> of a <b>Column Family</b>.
 					</li>
 					<li>Each <span class="blue">Column</span> has a property that
 						represents its <span class="red">name (Datatype: String)</span>.
@@ -476,7 +476,7 @@
 				</p>
 				<ul align="justify">
 					<li>Each <span class="blue">Cell</span> belongs to exactly to
-						one <b>Row</b> of a <b>Column Family</b>. They contain <span class="orange">Column</span>.
+						one <b>Row</b> of a <b>Column Family</b>. They refer to a <span class="orange">Column</span>.
 					</li>
 					<li>Each <span class="blue">Cell</span> has a property to
 						store data called, <span class="red">value (Datatype:
@@ -589,13 +589,8 @@
 						object, and it takes a column object and creates a Cassandra
 						column object with the same name.</li>
 					<li>The following table represents a sample list of SQL data types
-						and the corresponding NoSQL data types to which they are mapped(<span style="font-family:Lucida Console; color:DarkOrange">c</span><span style="font-family:Lucida Console; color:DodgerBlue">SiTra</span> does not map all of them).</li>
-					<img src="res/images/dtmapping.png" class="images" />
-
-					<li>If the table has a constraint of type PRIMARY or
-						COMPOSITE_PRIMARY then create a PrimaryKey for the column family
-						with the reference of the column(s) object.</li>
-					
+						and the corresponding NoSQL data types to which they are mapped (<span style="font-family:Lucida Console; color:DarkOrange">c</span><span style="font-family:Lucida Console; color:DodgerBlue">SiTra</span> does not map all of them).</li>
+					<img src="res/images/dtmapping.png" class="images" />				
 				</ul>
 				<br>
 
@@ -604,6 +599,9 @@
 
 				</h4>
 				<ul>
+					<li>If the table has a constraint of type PRIMARY or
+						COMPOSITE_PRIMARY then create a PrimaryKey for the column family
+						with the reference of the column(s) object.</li>
 					<li>This rule applies to the SQL’s Constraints and to the
 						Cassandra’s Constraints.</li>
 					<li>This rule applies to each constraint object present in the
